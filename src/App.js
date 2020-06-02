@@ -1,11 +1,33 @@
 import React, { useState, useEffect } from 'react';
 import './App.css';
 
+import AddCharity from './components/AddCharity';
+import Charity from './components/Charity';
+
 function App() {
   const [loggedIn, setLoggedIn] = useState(false);
+  const [charities, setCharities] = useState([]);
+
+  useEffect(() => {
+    console.log(charities);
+  })
 
   function logIn() {
-    setLoggedIn(true)
+    setLoggedIn(true);
+  }
+
+  function addCharity(charityObj) {
+    setCharities(charities.concat([charityObj]));
+  }
+
+  function deleteCharity(index) {
+    let char = []
+    for(var i = 0; i < charities.length; i++) {
+      if(i != index) {
+        char.push(charities[i])
+      }
+    }
+    setCharities(char);
   }
 
   return (
@@ -22,8 +44,10 @@ function App() {
             <h2>Welcome, USERNAME, here are your selected hashtags, charities, and donation amounts.</h2>
           </div>
           <div className = "charities">
-            each of the different charities will go here
-            <div className = "add-charity">+</div>
+            {charities.map((item, index) => (
+              <Charity index={index} name = {item.hashtag} delete = {deleteCharity} />
+            ))}
+            <AddCharity addChar={addCharity} />
           </div>
         </div>
       }
