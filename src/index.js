@@ -1,8 +1,13 @@
 // Libraries
 import React from "react";
 import { render } from "react-dom";
+
 import Amplify from "aws-amplify";
 import awsExports from "./aws-exports";
+
+import { ThemeProvider } from "styled-components";
+import theme from "./utils/theme";
+import GlobalStyles from "./utils/global";
 
 import * as serviceWorker from "./serviceWorker";
 
@@ -12,11 +17,19 @@ import "./index.css";
 // Component Imports
 import App from "./App";
 
+// Load environment vars from .env
+require('dotenv').config();
+
 Amplify.configure(awsExports);
 
 render(
   <React.StrictMode>
-    <App />
+    <ThemeProvider theme={theme}>
+      <>
+        <App />
+        <GlobalStyles />
+      </>
+    </ThemeProvider>
   </React.StrictMode>,
   document.getElementById("root")
 );
