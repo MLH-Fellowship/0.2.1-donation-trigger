@@ -1,8 +1,8 @@
 // Libraries
 import React, { useState, useEffect } from "react";
 import { API, graphqlOperation } from "aws-amplify";
-import { createUser } from "./graphql/mutations";
-import { listUsers } from "./graphql/queries";
+import { createUser, createDonation, deleteDonation } from "./graphql/mutations";
+import { listUsers, listDonations } from "./graphql/queries";
 
 // Styles
 import "./App.css";
@@ -24,6 +24,7 @@ function App() {
 
   useEffect(() => {
     fetchUser();
+    fetchDonations();
   }, []);
 
   const handleInputChange = (e) => {
@@ -40,7 +41,7 @@ function App() {
     try {
       const userData = await API.graphql(graphqlOperation(listUsers));
 
-      console.log(userData.data.listUsers);
+      console.log(userData.data.listUsers.items);
 
       const users = userData.data.listUsers.items;
 
@@ -74,20 +75,76 @@ function App() {
     }
   };
 
-  function addCharity(charityObj) {
-    console.log(charityObj)
-    setCharities(charities.concat([charityObj]));
-  }
+    // Adding a charity/donations to the db
+    const addCharity = async (charityObj) => {
+      try {
+        if (!charityObj.charity || !charityObj.amount) return; // making sure the inputs have values
 
+        setCharities(charities.concat([charityObj]));
+
+        const input = {
+          userID: users[0].id,
+          trigger: "TWEET",
+          initialAmount: parseFloat(charityObj.amount),
+          accumulatedAmount: 0.00,
+          numberOfCalls: 0,
+          limit: 0
+        }
+  
+        await API.graphql(graphqlOperation(createDonation, { input: input }));
+      } catch (err) {
+        console.error(err);
+      }
+    };
+
+    // Fetching the donations with our graphql query
+    const fetchDonations = async () => {
+      try {
+        const donationData = await API.graphql(graphqlOperation(listDonations));
+
+        console.log(donationData.data.listDonations.items);
+      } catch (err) {
+        console.error(err);
+    }
+  };
+
+  // Deleting a user from the DB
+
+  // NOT WORKING FOR ME
+  const deleteDonation = async (charityObj) => {
+    try {
+      if (!charityObj.charity || !charityObj.amount) return; // making sure the inputs have values
+
+
+      const input = {
+        userID: users[0].id,
+        trigger: "TWEET",
+        initialAmount: parseFloat(charityObj.amount),
+        accumulatedAmount: 0.00,
+        numberOfCalls: 0,
+        limit: 0
+      }
+
+      console.log(input)
+      
+      await API.graphql(graphqlOperation(deleteDonation, {input: {id: "6cc6c971-c0d2-4499-93aa-e99fa3d39d84"}}));
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
+  //id the charity and then delete from the db based on that
   function deleteCharity(index) {
     let char = []
     for(var i = 0; i < charities.length; i++) {
       if(i != index) {
         char.push(charities[i])
+      } else {
+        deleteDonation(charities[i])
       }
     }
     setCharities(char);
-  }
+  };
 
   return (
     <div className="App">
@@ -137,7 +194,7 @@ function App() {
       {loggedIn &&
         <div className = "content-wrapper">
           <div className = "welcome-message">
-            <h2>Welcome, {users[0].fullName} <br /> Here are your selected hashtags, charities, and donation amounts.</h2>
+            <h2>Welcome, {users[0].fullName}! <br /> Here are your selected hashtags, charities, and donation amounts.</h2>
           </div>
           <div className = "charities">
             <Charity index={-1} item={{charity: ["Charity Name"], hashtag:"Hashtag", amount:"Amount Raised"}} />
