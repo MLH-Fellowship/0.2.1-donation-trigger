@@ -9,7 +9,6 @@
     "@testing-library/user-event": "^7.1.2",
     "dotenv": "^8.2.0",
     "aws-amplify": "^3.0.14",
-    "dotenv": "^8.2.0",
     "react": "^16.13.1",
     "react-currency-format": "^1.0.0",
     "react-dom": "^16.13.1",
@@ -17,8 +16,8 @@
     "react-scripts": "3.4.1",
     "react-text-loop": "^2.3.0",
     "styled-components": "^5.1.1",
-    "twit": "^2.2.11"
-    "react-twitter-login": "^1.1.2",
+    "twit": "^2.2.11",
+    "react-twitter-login": "^1.1.2"
   },
   "scripts": {
     "start": "react-scripts start",

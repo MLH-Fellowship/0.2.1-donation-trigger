@@ -1,14 +1,17 @@
-// Libraries
 import React, { useState, useEffect } from "react";
 import { API, graphqlOperation } from "aws-amplify";
 import { createUser } from "./graphql/mutations";
 import { listUsers } from "./graphql/queries";
+import Auth from "./Auth";
+import Logout from "./Logout";
 
 // Styles
 import "./App.css";
 
 import AddCharity from "./components/AddCharity";
 import Charity from "./components/Charity";
+
+require("dotenv").config();
 
 function App() {
   const [loggedIn, setLoggedIn] = useState(false);
@@ -21,6 +24,8 @@ function App() {
   });
 
   const [users, setUsers] = useState([]);
+
+  const [user, setUser] = useState(localStorage.user);
 
   useEffect(() => {
     fetchUser();
@@ -97,27 +102,10 @@ function App() {
         automating your donations based on social media hashtags and content.
       </h3>
 
-      {/* <div>
-        <h3>Users list:</h3>
-
-        {users.map((user, i) => (
-          <div key={user.id ? user.id : i}>
-            <p>
-              {user.fullName} | {user.handle}
-            </p>
-          </div>
-        ))}
-      </div> */}
-
-      {!loggedIn && (
-        <div>
-          <div className="login" onClick={() => setLoggedIn(true)}>
-            Login To View and Control Your Donations
-          </div>
-          <div className="login" onClick={() => setCreatingAccount(true)}>
-            Create an Account
-          </div>
-        </div>
+      {user ? (
+        <Logout removeUser={() => setUser(null)} />
+      ) : (
+        <Auth addUser={(x) => setUser(x)} />
       )}
       {creatingAccount && (
         <div>
