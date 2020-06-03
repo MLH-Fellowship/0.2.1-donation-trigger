@@ -1,7 +1,3 @@
-// Load API key and secret
-require('dotenv').config();
-
-
 const fetch = require('node-fetch');
 
 
