@@ -1,0 +1,27 @@
+.charity{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: .75rem;
+    background-color: white;
+    border: 2px solid black;
+    border-radius: 1rem;
+    color: black;
+}
+
+.content {
+    padding: .25rem;
+    width: 10rem;
+}
+
+.delete{
+    color: red;
+    font-weight: bold;
+    background-color: white;
+}
+
+.donate{
+    color: blue;
+    font-weight: bold;
+    background-color: white;
+  }

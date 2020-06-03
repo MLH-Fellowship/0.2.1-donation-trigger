@@ -1,5 +1,5 @@
 body {
-  background-image: linear-gradient(#7400B8,  #48BFE3);
+  background-image: linear-gradient(rgb(15, 179, 0), white);
   height: 100%;
   margin: 0;
   background-repeat: no-repeat;
@@ -20,18 +20,20 @@ a {
   padding: 2rem;
   height: 100%;
   text-align: center;
-  font-family: 'Cabin', sans-serif;
-  color: #f0ffff;
+  /* font-family: 'Cabin', sans-serif; */
+  font-family: 'Courier';
+  color: black;
 }
 
 .login {
   cursor: pointer;
-  background-color: #5390D9;
+  background-image: radial-gradient(rgb(0, 11, 165), rgb(0, 17, 255));
   padding: 2rem;
   width: 20rem;
   border-radius: 3rem;
   /* offset-x | offset-y | blur-radius | color */
   box-shadow: 8px 5px 5px #4a4a4a;
+  color: white;
 }
 
 .content-wrapper {
@@ -42,5 +44,9 @@ a {
 }
 
 .welcome-message{
-  max-width: 30rem;
+  max-width: 25rem;
+}
+
+.charities {
+  width: 40rem;
 }

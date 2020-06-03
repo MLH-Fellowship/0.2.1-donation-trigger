@@ -4,7 +4,7 @@ import '../assets/form.css';
 function AddCharity(props) {
     const [formMode, setMode] = useState(false);
     const [charity, setCharity] = useState();
-    const [amount, setAmount] = useState(0);
+    const [amount, setAmount] = useState();
     const [hashtag, setHashtag] = useState("");
 
     function submit() {
@@ -15,31 +15,38 @@ function AddCharity(props) {
         }
 
         props.addChar(newEntry);
+
+        setMode(false);
+        setCharity();
+        setAmount(0);
+        setHashtag("");
     }
 
     return (
-        <div className="form-wrapper">
+        <div>
             {formMode &&
-                <div>
-                    <select value={charity} onChange={() => setCharity("")}>
+                <div className="form-wrapper">
+                    <select value={charity} onChange={(e) => setCharity(e.target.value)}>
                         <option name="Choose a Charity" value="">Choose a Charity</option>
+                        <option name="Charity 1" value="Charity 1">Charity 1</option>
                             {[].map(item => (
-                                <option name={item.name} value={item.id}>
+                                <option name={item.name} value={item.name}>
                                     {item.name}
                                 </option>
                             ))}
                      </select>
-                    Enter a hashtag:
-                    <input type="text" value={hashtag} onChange={(e)=>setHashtag(e.target.value)}></input>
-                    How much do you want to donate per mention?
-                    <input type="text" value={amount} onChange={(e)=>setAmount(e.target.value)}></input>
-                    <button onClick={submit}>Submit</button>
-                    <button onClick={() => setMode(false)}>X</button>
+                    <input type="text" value={hashtag} placeholder="eg. #blm" onChange={(e)=>setHashtag(e.target.value)}></input>
+                    <input 
+                        type="text" value={amount} 
+                        placeholder="$0.01 / hashtag mention" 
+                        onChange={(e)=>setAmount(e.target.value)} />
+                    <button className="submit" onClick={submit}>&#10003;</button>
+                    <button className="delete" onClick={() => setMode(false)}>X</button>
                 </div>
             }
             {!formMode &&
                 <div>
-                    <button onClick={() => setMode(true)}>+</button>
+                    <button className="add" onClick={() => setMode(true)}>&#x271A; Add a donation</button>
                 </div>
             }
         </div>

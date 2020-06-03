@@ -32,20 +32,21 @@ function App() {
 
   return (
     <div className="App">
-      <h1>Welcome to Donation-Bot</h1>
-      <h4>Engagement on social media does matter: Make it matter more by automating your donations based on social media hashtags 
-        and content.</h4>
+      <h1>if this, then donate</h1>
+      <h3>Engagement on social media does matter: Make it matter more by automating your donations based on social media hashtags 
+        and content.</h3>
       {!loggedIn &&
         <div className="login" onClick={() => logIn()}>Login To View and Control Your Donations</div>
       }
       {loggedIn &&
         <div className = "content-wrapper">
           <div className = "welcome-message">
-            <h2>Welcome, USERNAME, here are your selected hashtags, charities, and donation amounts.</h2>
+            <h2>Welcome, USERNAME <br /> Here are your selected hashtags, charities, and donation amounts.</h2>
           </div>
           <div className = "charities">
+            <Charity index={-1} item={{charityName:"Charity Name", hashtag:"Hashtag", amount:"Amount Raised"}} />
             {charities.map((item, index) => (
-              <Charity index={index} name = {item.hashtag} delete = {deleteCharity} />
+              <Charity index={index} item={item} delete = {deleteCharity} />
             ))}
             <AddCharity addChar={addCharity} />
           </div>

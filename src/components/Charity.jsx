@@ -1,5 +1,5 @@
 import React from 'react';
-import '../assets/form.css';
+import '../assets/charity.css';
 
 function AddCharity(props) {
     function del() {
@@ -8,8 +8,18 @@ function AddCharity(props) {
 
     return (
         <div className="charity">
-            {props.name}
-            <button onClick={del}>X</button>
+            <div className="content">{props.item.charityName}</div>
+            <div className="content">{props.item.hashtag}</div>
+            <div className="content">{props.item.amount}</div>
+            {!(props.index==-1) &&
+                <div>
+                    <button className="donate">Donate!</button>
+                    <button className = "delete" onClick={del}>X</button>
+                </div>
+            }
+            {props.index==-1 &&
+                <div className="content"></div>
+            }
         </div>
     )
 }
