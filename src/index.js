@@ -1,14 +1,24 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import * as serviceWorker from './serviceWorker';
+// Libraries
+import React from "react";
+import { render } from "react-dom";
+import Amplify from "aws-amplify";
+import awsExports from "./aws-exports";
 
-ReactDOM.render(
+import * as serviceWorker from "./serviceWorker";
+
+// Styles
+import "./index.css";
+
+// Component Imports
+import App from "./App";
+
+Amplify.configure(awsExports);
+
+render(
   <React.StrictMode>
     <App />
   </React.StrictMode>,
-  document.getElementById('root')
+  document.getElementById("root")
 );
 
 // If you want your app to work offline and load faster, you can change
