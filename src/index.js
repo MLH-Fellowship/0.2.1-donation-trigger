@@ -1,3 +1,6 @@
+// Load environment vars from .env
+require('dotenv').config();
+
 // Libraries
 import React from "react";
 import { render } from "react-dom";

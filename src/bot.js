@@ -1,5 +1,7 @@
 class TwitterBot {
     /**
+     * Create a new TwitterBot instance
+     * 
      * Please make sure the required env vars (CONSUMER_KEY, CONSUMER_SECRET, ACCESS_TOKEN, ACCESS_TOKEN_SECRET) are set.
      */
     constructor() {
@@ -41,18 +43,15 @@ class TwitterBot {
         return new Promise(
             (resolve, reject) => {
                 this.bot.post("favorites/create", params, (err, res) => {
-                    if (err) {
-                        reject(err)
-                    } else {
-                        resolve(res)
-                    }
+                    if (err) return reject(err)
+                    resolve(res)
                 });
             }
         );
     }
 
     /**
-     * Comment on a tweet (max. 300 comments / 3h)
+     * Comment on a tweet (max. 300 comments & retweets / 3h)
      * 
      * @param {String} id The ID of an existing status that the update is in reply to.
      * @param {String} message The text of the status update. URL encode as necessary.
@@ -60,7 +59,7 @@ class TwitterBot {
      */
     comment(id, message) {
         if (typeof id !== 'string' || id === '') {
-            throw 'ID may not be empty'
+            throw new Error('ID may not be empty');
         }
 
         const params = {
@@ -72,14 +71,47 @@ class TwitterBot {
         return new Promise(
             (resolve, reject) => {
                 this.bot.post("statuses/update", params, (err, res) => {
-                    if (err) {
-                        reject(err)
-                    } else {
-                        resolve(res)
-                    }
+                    if (err) return reject(err)
+                    resolve(res)
                 });
             }
         );
+    }
+
+    /**
+     * Retweet a tweet (max. 300 comments & retweets / 3h)
+     * 
+     * @param {String} id 
+     */
+    retweet(id) {
+        if (typeof id !== 'string' || id === '') {
+            throw new Error('ID may not be empty');
+        }
+
+        const params = {
+            id: id,
+        };
+
+        return new Promise(
+            (resolve, reject) => {
+                this.bot.post("statuses/retweet/:id", params, (err, res) => {
+                    if (err) return reject(err)
+                    resolve(res)
+                });
+            }
+        );
+    }
+
+    /**
+     * Filter realtime tweets based on a list of keywords, #hashtags or @mentions
+     * 
+     * @param {Array} keywords A list of keywords, #hashtags or @mentions
+     * @returns {EventEmitter} A stream of tweets
+     * 
+     * @see https://github.com/ttezel/twit#using-the-streaming-api for a list of events
+     */
+    filter(keywords) {
+        return this.bot.stream('statuses/filter', { track: keywords.join(','), stall_warnings: true })
     }
 }
 

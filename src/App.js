@@ -10,9 +10,6 @@ import "./App.css";
 import AddCharity from './components/AddCharity';
 import Charity from './components/Charity';
 
-// Load environment vars from .env
-require('dotenv').config();
-
 function App() {
   const [loggedIn, setLoggedIn] = useState(false);
   const [creatingAccount, setCreatingAccount] = useState(false);
