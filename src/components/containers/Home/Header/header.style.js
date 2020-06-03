@@ -8,7 +8,7 @@ export const Background = styled.div`
     font-family: "Prata", serif;
     font-size: 3rem;
 
-    margin: 1.2rem 0 0.75rem 0;
+    padding: 1.5rem 0 0.75rem 0;
   }
 
   p {
@@ -21,6 +21,7 @@ export const Tag = styled.div`
 
   text-transform: uppercase;
   font-weight: 700;
+  font-size: 0.9rem;
 
   padding: 0.5rem 1rem;
 
