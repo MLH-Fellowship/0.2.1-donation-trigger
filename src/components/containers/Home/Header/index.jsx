@@ -18,6 +18,9 @@ const Header = () => {
           Make it matter more by automating your donations based on social media
           hashtags and content.
         </p>
+
+        <p>Start donating today by</p>
+        <button>Signing in with Twitter</button>
       </Container>
     </Background>
   );

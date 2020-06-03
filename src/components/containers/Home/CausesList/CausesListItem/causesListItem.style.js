@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const Card = styled.div`
   border-radius: 5px;
-  height: 13rem;
+  height: 11rem;
 
   padding: 1.5rem;
   font-weight: 500;
@@ -19,7 +19,7 @@ export const Card = styled.div`
   box-shadow: 0px 5px 30px -7px rgba(173, 173, 173, 0.54);
 
   h2 {
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.75rem;
   }
 
   a {
