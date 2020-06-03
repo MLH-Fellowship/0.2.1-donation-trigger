@@ -29,6 +29,7 @@ a {
   cursor: pointer;
   background-image: radial-gradient(rgb(0, 11, 165), rgb(0, 17, 255));
   padding: 2rem;
+  margin: 1rem;
   width: 20rem;
   border-radius: 3rem;
   /* offset-x | offset-y | blur-radius | color */
