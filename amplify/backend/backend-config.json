@@ -1,1 +1,20 @@
-{}
+{
+	"api": {
+		"021donationtrigger": {
+			"service": "AppSync",
+			"providerPlugin": "awscloudformation",
+			"output": {
+				"authConfig": {
+					"additionalAuthenticationProviders": [],
+					"defaultAuthentication": {
+						"authenticationType": "API_KEY",
+						"apiKeyConfig": {
+							"description": "API foor Donation Trigger",
+							"apiKeyExpirationDays": "14"
+						}
+					}
+				}
+			}
+		}
+	}
+}

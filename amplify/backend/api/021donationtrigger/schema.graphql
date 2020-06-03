@@ -1,0 +1,25 @@
+type User @model {
+  id: ID!
+  fullName: String!
+  handle: String!
+  token: String!
+  activeDonations: [Donation]! @connection(keyName: "byUser", fields: ["id"])
+}
+
+type Donation @model @key(name: "byUser", fields: ["userID"]) {
+  id: ID!
+  userID: ID!
+  user: User! @connection(fields: ["userID"])
+  trigger: Trigger!
+  initialAmount: Float!
+  accumulatedAmount: Float!
+  numberOfCalls: Int!
+  limit: Int!
+}
+
+enum Trigger {
+  RETWEET
+  TWEET
+  FOLLOW
+  REPLY
+}
