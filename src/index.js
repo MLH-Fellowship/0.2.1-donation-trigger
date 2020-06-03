@@ -1,6 +1,3 @@
-// Load environment vars from .env
-require('dotenv').config();
-
 // Libraries
 import React from "react";
 import { render } from "react-dom";
@@ -14,6 +11,9 @@ import "./index.css";
 
 // Component Imports
 import App from "./App";
+
+// Load environment vars from .env
+require('dotenv').config();
 
 Amplify.configure(awsExports);
 
