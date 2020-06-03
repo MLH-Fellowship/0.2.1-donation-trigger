@@ -18,7 +18,7 @@ export default createGlobalStyle`
     }
 
     body {
-        font-family: 'Rubik', sans-serif;
+        font-family: 'Helvetica', sans-serif;
         font-weight: 400;
     }
 
