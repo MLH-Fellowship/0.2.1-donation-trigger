@@ -75,6 +75,7 @@ function App() {
   };
 
   function addCharity(charityObj) {
+    console.log(charityObj)
     setCharities(charities.concat([charityObj]));
   }
 
@@ -139,9 +140,9 @@ function App() {
             <h2>Welcome, {users[0].fullName} <br /> Here are your selected hashtags, charities, and donation amounts.</h2>
           </div>
           <div className = "charities">
-            <Charity index={-1} item={{charityName:"Charity Name", hashtag:"Hashtag", amount:"Amount Raised"}} />
+            <Charity index={-1} item={{charity: ["Charity Name"], hashtag:"Hashtag", amount:"Amount Raised"}} />
             {charities.map((item, index) => (
-              <Charity index={index} item={item} delete = {deleteCharity} />
+              <Charity index={index} item={item} delete={deleteCharity} />
             ))}
             <AddCharity addChar={addCharity} />
           </div>

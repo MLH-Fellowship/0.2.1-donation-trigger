@@ -8,12 +8,12 @@ function AddCharity(props) {
 
     return (
         <div className="charity">
-            <div className="content">{props.item.charityName}</div>
+            <div className="content">{props.item.charity[0]}</div>
             <div className="content">{props.item.hashtag}</div>
             <div className="content">{props.item.amount}</div>
             {!(props.index==-1) &&
                 <div>
-                    <button className="donate">Donate!</button>
+                    <button className="donate" onClick={() => {window.open(props.item.charity[1], '_blank');}}>Donate!</button>
                     <button className = "delete" onClick={del}>X</button>
                 </div>
             }

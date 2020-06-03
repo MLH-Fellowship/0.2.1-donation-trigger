@@ -1,6 +1,22 @@
 import React, { useState } from 'react';
 import '../assets/form.css';
 
+
+let charities = [
+    {
+        name: "Reclaim the Block",
+        website: "https://secure.everyaction.com/zae4prEeKESHBy0MKXTIcQ2"
+    },
+    {
+        name: "Black Visions Collective",
+        website: "https://secure.everyaction.com/4omQDAR0oUiUagTu0EG-Ig2"
+    },
+    {
+        name: "Philly Bail Fund",
+        website: "https://www.phillybailfund.org/donate"
+    }
+]
+
 function AddCharity(props) {
     const [formMode, setMode] = useState(false);
     const [charity, setCharity] = useState();
@@ -9,10 +25,11 @@ function AddCharity(props) {
 
     function submit() {
         let newEntry = {
-            charityName: charity,
+            charity: charity.split(","),
             amount: amount,
             hashtag: hashtag
         }
+        console.log(charity.split(","))
 
         props.addChar(newEntry);
 
@@ -28,9 +45,8 @@ function AddCharity(props) {
                 <div className="form-wrapper">
                     <select value={charity} onChange={(e) => setCharity(e.target.value)}>
                         <option name="Choose a Charity" value="">Choose a Charity</option>
-                        <option name="Charity 1" value="Charity 1">Charity 1</option>
-                            {[].map(item => (
-                                <option name={item.name} value={item.name}>
+                            {charities.map(item => (
+                                <option name={item.name} value={[item.name, item.website]}>
                                     {item.name}
                                 </option>
                             ))}
