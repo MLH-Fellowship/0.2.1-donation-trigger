@@ -8,10 +8,23 @@ export const Background = styled.div`
     font-family: "Prata", serif;
     font-size: 3rem;
 
-    margin-bottom: 0.75rem;
+    margin: 1.2rem 0 0.75rem 0;
   }
 
   p {
     font-size: 1.5rem;
   }
+`;
+
+export const Tag = styled.div`
+  display: inline;
+
+  text-transform: uppercase;
+  font-weight: 700;
+
+  padding: 0.5rem 1rem;
+
+  color: #718096;
+  background-color: #cbd5e0;
+  border-radius: 25rem;
 `;

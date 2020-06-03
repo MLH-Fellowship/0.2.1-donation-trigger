@@ -3,13 +3,13 @@ import React from "react";
 
 // Styles
 import { Container, Highlight } from "../../../../styles/index.style";
-import { Background } from "./header.style";
+import { Background, Tag } from "./header.style";
 
 const Header = () => {
   return (
     <Background>
       <Container>
-        <p>If This Then Donate</p>
+        <Tag>If This Then Donate</Tag>
 
         <h1>
           Engagement on social media <Highlight>does matter</Highlight>
