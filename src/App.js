@@ -7,12 +7,19 @@ import { listUsers } from "./graphql/queries";
 // Styles
 import "./App.css";
 
+import AddCharity from './components/AddCharity';
+import Charity from './components/Charity';
+
 function App() {
+  const [loggedIn, setLoggedIn] = useState(false);
+  const [creatingAccount, setCreatingAccount] = useState(false);
+  const [charities, setCharities] = useState([]);
   const [formState, setFormState] = useState({
     fullName: "",
     handle: "",
     token: "random-string-token-0123-456",
   });
+
   const [users, setUsers] = useState([]);
 
   useEffect(() => {
@@ -57,6 +64,9 @@ function App() {
         handle: "",
       });
 
+      setLoggedIn(true);
+      setCreatingAccount(false);
+
       // Sending our newly created user to our createUser mutation
       await API.graphql(graphqlOperation(createUser, { input: user }));
     } catch (err) {
@@ -64,11 +74,47 @@ function App() {
     }
   };
 
+  function addCharity(charityObj) {
+    console.log(charityObj)
+    setCharities(charities.concat([charityObj]));
+  }
+
+  function deleteCharity(index) {
+    let char = []
+    for(var i = 0; i < charities.length; i++) {
+      if(i != index) {
+        char.push(charities[i])
+      }
+    }
+    setCharities(char);
+  }
+
   return (
     <div className="App">
-      <h1>donation-bot is coming!</h1>
+      <h1>if this, then donate</h1>
+      <h3>Engagement on social media does matter: Make it matter more by automating your donations based on social media hashtags 
+        and content.</h3>
 
-      <div>
+      {/* <div>
+        <h3>Users list:</h3>
+
+        {users.map((user, i) => (
+          <div key={user.id ? user.id : i}>
+            <p>
+              {user.fullName} | {user.handle}
+            </p>
+          </div>
+        ))}
+      </div> */}
+
+      {!loggedIn &&
+        <div>
+          <div className="login" onClick={() => setLoggedIn(true)}>Login To View and Control Your Donations</div>
+          <div className="login" onClick={() => setCreatingAccount(true)}>Create an Account</div>
+        </div>
+      }
+      {creatingAccount &&
+        <div>
         <h2>Create user sample</h2>
 
         <input
@@ -87,20 +133,22 @@ function App() {
 
         <button onClick={() => addUser()}>Create user</button>
       </div>
-
-      <div>
-        <h3>Users list:</h3>
-
-        {users.map((user, i) => (
-          <div key={user.id ? user.id : i}>
-            <p>
-              {user.fullName} | {user.handle}
-            </p>
+      }
+      {loggedIn &&
+        <div className = "content-wrapper">
+          <div className = "welcome-message">
+            <h2>Welcome, {users[0].fullName} <br /> Here are your selected hashtags, charities, and donation amounts.</h2>
           </div>
-        ))}
-      </div>
+          <div className = "charities">
+            <Charity index={-1} item={{charity: ["Charity Name"], hashtag:"Hashtag", amount:"Amount Raised"}} />
+            {charities.map((item, index) => (
+              <Charity index={index} item={item} delete={deleteCharity} />
+            ))}
+            <AddCharity addChar={addCharity} />
+          </div>
+        </div>
+      }
     </div>
-  );
-}
+  )}
 
 export default App;
