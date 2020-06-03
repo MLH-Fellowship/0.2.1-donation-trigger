@@ -15,10 +15,11 @@ export default createGlobalStyle`
         box-sizing: border-box;
 
        /* Gloabl variables here */
+       --color-main: ${({ theme }) => theme.colors.main}
     }
 
     body {
-        font-family: 'Helvetica', sans-serif;
+        font-family: 'Roboto', sans-serif;
         font-weight: 400;
     }
 

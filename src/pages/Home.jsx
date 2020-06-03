@@ -1,14 +1,18 @@
 // Libraries
 import React from "react";
 
+// Styles
+import { Container } from "../styles/index.style";
+
+// Component Imports
+import Header from "../components/containers/Home/Header";
+import EventsLoop from "../components/containers/Home/EventsLoop";
+
 const Home = () => {
   return (
     <div>
-      <h1>If This Then Donate</h1>
-      <p>
-        Engagement on social media does matter: Make it matter more by
-        automating your donations based on social media hashtags and content.
-      </p>
+      <Header />
+      <EventsLoop />
     </div>
   );
 };
