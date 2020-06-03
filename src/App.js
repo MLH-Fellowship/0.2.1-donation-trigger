@@ -3,12 +3,16 @@ import React, { useState, useEffect } from "react";
 import { API, graphqlOperation } from "aws-amplify";
 import { createUser } from "./graphql/mutations";
 import { listUsers } from "./graphql/queries";
+import Auth from "./Auth";
+import Logout from "./Logout";
 
 // Styles
 import "./App.css";
 
-import AddCharity from './components/AddCharity';
-import Charity from './components/Charity';
+import AddCharity from "./components/AddCharity";
+import Charity from "./components/Charity";
+
+require("dotenv").config();
 
 function App() {
   const [loggedIn, setLoggedIn] = useState(false);
@@ -21,6 +25,8 @@ function App() {
   });
 
   const [users, setUsers] = useState([]);
+
+  const [user, setUser] = useState(localStorage.user);
 
   useEffect(() => {
     fetchUser();
@@ -75,15 +81,15 @@ function App() {
   };
 
   function addCharity(charityObj) {
-    console.log(charityObj)
+    console.log(charityObj);
     setCharities(charities.concat([charityObj]));
   }
 
   function deleteCharity(index) {
-    let char = []
-    for(var i = 0; i < charities.length; i++) {
-      if(i != index) {
-        char.push(charities[i])
+    let char = [];
+    for (var i = 0; i < charities.length; i++) {
+      if (i != index) {
+        char.push(charities[i]);
       }
     }
     setCharities(char);
@@ -92,8 +98,10 @@ function App() {
   return (
     <div className="App">
       <h1>if this, then donate</h1>
-      <h3>Engagement on social media does matter: Make it matter more by automating your donations based on social media hashtags 
-        and content.</h3>
+      <h3>
+        Engagement on social media does matter: Make it matter more by
+        automating your donations based on social media hashtags and content.
+      </h3>
 
       {/* <div>
         <h3>Users list:</h3>
@@ -107,48 +115,58 @@ function App() {
         ))}
       </div> */}
 
-      {!loggedIn &&
+      {user ? (
+        <Logout removeUser={() => setUser(null)} />
+      ) : (
+        <Auth addUser={(x) => setUser(x)} />
+      )}
+      {creatingAccount && (
         <div>
-          <div className="login" onClick={() => setLoggedIn(true)}>Login To View and Control Your Donations</div>
-          <div className="login" onClick={() => setCreatingAccount(true)}>Create an Account</div>
+          <h2>Create user sample</h2>
+
+          <input
+            name="fullName"
+            value={formState.fullName}
+            onChange={(e) => handleInputChange(e)}
+            placeholder="Full name..."
+          />
+
+          <input
+            name="handle"
+            value={formState.handle}
+            onChange={(e) => handleInputChange(e)}
+            placeholder="Handle..."
+          />
+
+          <button onClick={() => addUser()}>Create user</button>
         </div>
-      }
-      {creatingAccount &&
-        <div>
-        <h2>Create user sample</h2>
-
-        <input
-          name="fullName"
-          value={formState.fullName}
-          onChange={(e) => handleInputChange(e)}
-          placeholder="Full name..."
-        />
-
-        <input
-          name="handle"
-          value={formState.handle}
-          onChange={(e) => handleInputChange(e)}
-          placeholder="Handle..."
-        />
-
-        <button onClick={() => addUser()}>Create user</button>
-      </div>
-      }
-      {loggedIn &&
-        <div className = "content-wrapper">
-          <div className = "welcome-message">
-            <h2>Welcome, {users[0].fullName} <br /> Here are your selected hashtags, charities, and donation amounts.</h2>
+      )}
+      {loggedIn && (
+        <div className="content-wrapper">
+          <div className="welcome-message">
+            <h2>
+              Welcome, {users[0].fullName} <br /> Here are your selected
+              hashtags, charities, and donation amounts.
+            </h2>
           </div>
-          <div className = "charities">
-            <Charity index={-1} item={{charity: ["Charity Name"], hashtag:"Hashtag", amount:"Amount Raised"}} />
+          <div className="charities">
+            <Charity
+              index={-1}
+              item={{
+                charity: ["Charity Name"],
+                hashtag: "Hashtag",
+                amount: "Amount Raised",
+              }}
+            />
             {charities.map((item, index) => (
               <Charity index={index} item={item} delete={deleteCharity} />
             ))}
             <AddCharity addChar={addCharity} />
           </div>
         </div>
-      }
+      )}
     </div>
-  )}
+  );
+}
 
 export default App;
