@@ -4,7 +4,7 @@
 
 <h4>Built with</h4>
 
-<p align="center"><img src="https://user-images.githubusercontent.com/16248113/83819990-643abe80-a699-11ea-8d10-dbbfe53eff3f.png" alt="Built With Javascript, React, Babel, AWS Amplify, and styled-components" /></p>
+<p align="center"><img src="https://user-images.githubusercontent.com/16248113/83821895-9d752d80-a69d-11ea-94a9-fa3251971a6c.png" alt="Built With Javascript, React, Babel, AWS Amplify, Twitter API, and styled-components" /></p>
 
 <h4>In action:</h4>
 <p align="center"><img src="https://user-images.githubusercontent.com/16248113/83820631-29d22100-a69b-11ea-9bee-8a00f2316fec.png" alt="Built With Javascript, React, Babel, AWS Amplify, and styled-components" /></p>
