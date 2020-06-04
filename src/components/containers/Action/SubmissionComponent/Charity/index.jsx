@@ -1,28 +1,33 @@
-import React from 'react';
-
+import React from "react";
 import { Background } from "./charity.style";
 
-function Charity(props) {
-    function del() {
-        props.delete(props.index);
-    }
+const Charity = ({ index, item, deleteChar }) => {
+  const del = () => {
+    deleteChar(index);
+  };
 
-    return (
-        <Background>
-            <p>{props.item.charity[0]}</p>
-            <p>{props.item.hashtag}</p>
-            <p>{props.item.amount}</p>
-            {!(props.index===-1) &&
-                <p>
-                    <button onClick={() => {window.open(props.item.charity[1], '_blank');}}>Donate!</button>
-                    <button onClick={del}>X</button>
-                </p>
-            }
-            {props.index===-1 &&
-                <p></p>
-            }
-        </Background>
-    )
-}
+  console.log(item);
 
-export default Charity
+  return (
+    <Background>
+      <p>{item.charity}</p>
+      <p>{item.hashtag}</p>
+      <p>{item.amount}</p>
+      {!(index === -1) && (
+        <p>
+          <button
+            onClick={() => {
+              window.open(item.charity[1], "_blank");
+            }}
+          >
+            Donate!
+          </button>
+          <button onClick={del}>X</button>
+        </p>
+      )}
+      {index === -1 && <p></p>}
+    </Background>
+  );
+};
+
+export default Charity;
