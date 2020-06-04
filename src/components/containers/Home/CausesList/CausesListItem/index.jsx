@@ -10,7 +10,7 @@ const CausesListItem = ({ data }) => {
   return (
     <Card img={img}>
       <h2>{name}</h2>
-      <a href={link} target="_blank">
+      <a href={link} rel="noopener noreferrer" target="_blank">
         Visit
       </a>
     </Card>
