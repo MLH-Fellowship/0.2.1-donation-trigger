@@ -4,7 +4,8 @@ const Logout = ({ removeUser }) => {
   return (
     <button
       onClick={() => {
-        localStorage.removeItem("user");
+        localStorage.removeItem("user_id");
+        localStorage.removeItem("user_name");
         removeUser();
       }}
     >

@@ -5,16 +5,15 @@ export const onCreateUser = /* GraphQL */ `
   subscription OnCreateUser {
     onCreateUser {
       id
-      fullName
+      twitterId
       handle
-      token
-      activeDonations {
+      donations {
         items {
           id
           userID
           organization
-          trigger
-          initialAmount
+          hashtags
+          amount
           accumulatedAmount
           numberOfCalls
           limit
@@ -32,16 +31,15 @@ export const onUpdateUser = /* GraphQL */ `
   subscription OnUpdateUser {
     onUpdateUser {
       id
-      fullName
+      twitterId
       handle
-      token
-      activeDonations {
+      donations {
         items {
           id
           userID
           organization
-          trigger
-          initialAmount
+          hashtags
+          amount
           accumulatedAmount
           numberOfCalls
           limit
@@ -59,16 +57,15 @@ export const onDeleteUser = /* GraphQL */ `
   subscription OnDeleteUser {
     onDeleteUser {
       id
-      fullName
+      twitterId
       handle
-      token
-      activeDonations {
+      donations {
         items {
           id
           userID
           organization
-          trigger
-          initialAmount
+          hashtags
+          amount
           accumulatedAmount
           numberOfCalls
           limit
@@ -89,18 +86,17 @@ export const onCreateDonation = /* GraphQL */ `
       userID
       user {
         id
-        fullName
+        twitterId
         handle
-        token
-        activeDonations {
+        donations {
           nextToken
         }
         createdAt
         updatedAt
       }
       organization
-      trigger
-      initialAmount
+      hashtags
+      amount
       accumulatedAmount
       numberOfCalls
       limit
@@ -116,18 +112,17 @@ export const onUpdateDonation = /* GraphQL */ `
       userID
       user {
         id
-        fullName
+        twitterId
         handle
-        token
-        activeDonations {
+        donations {
           nextToken
         }
         createdAt
         updatedAt
       }
       organization
-      trigger
-      initialAmount
+      hashtags
+      amount
       accumulatedAmount
       numberOfCalls
       limit
@@ -143,18 +138,17 @@ export const onDeleteDonation = /* GraphQL */ `
       userID
       user {
         id
-        fullName
+        twitterId
         handle
-        token
-        activeDonations {
+        donations {
           nextToken
         }
         createdAt
         updatedAt
       }
       organization
-      trigger
-      initialAmount
+      hashtags
+      amount
       accumulatedAmount
       numberOfCalls
       limit

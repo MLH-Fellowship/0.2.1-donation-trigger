@@ -5,16 +5,15 @@ export const getUser = /* GraphQL */ `
   query GetUser($id: ID!) {
     getUser(id: $id) {
       id
-      fullName
+      twitterId
       handle
-      token
-      activeDonations {
+      donations {
         items {
           id
           userID
           organization
-          trigger
-          initialAmount
+          hashtags
+          amount
           accumulatedAmount
           numberOfCalls
           limit
@@ -37,10 +36,9 @@ export const listUsers = /* GraphQL */ `
     listUsers(filter: $filter, limit: $limit, nextToken: $nextToken) {
       items {
         id
-        fullName
+        twitterId
         handle
-        token
-        activeDonations {
+        donations {
           nextToken
         }
         createdAt
@@ -57,18 +55,17 @@ export const getDonation = /* GraphQL */ `
       userID
       user {
         id
-        fullName
+        twitterId
         handle
-        token
-        activeDonations {
+        donations {
           nextToken
         }
         createdAt
         updatedAt
       }
       organization
-      trigger
-      initialAmount
+      hashtags
+      amount
       accumulatedAmount
       numberOfCalls
       limit
@@ -89,15 +86,14 @@ export const listDonations = /* GraphQL */ `
         userID
         user {
           id
-          fullName
+          twitterId
           handle
-          token
           createdAt
           updatedAt
         }
         organization
-        trigger
-        initialAmount
+        hashtags
+        amount
         accumulatedAmount
         numberOfCalls
         limit

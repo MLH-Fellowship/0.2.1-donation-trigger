@@ -17,7 +17,6 @@ import "./index.css";
 // Component Imports
 import App from "./App";
 
-
 Amplify.configure(awsExports);
 
 render(

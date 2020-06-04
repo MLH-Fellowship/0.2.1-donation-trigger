@@ -10,7 +10,7 @@ import { Background, Tag } from "./header.style";
 require("dotenv").config();
 
 const Header = () => {
-  const [user, setUser] = useState(localStorage.user);
+  const [user, setUser] = useState(localStorage.user_id);
 
   return (
     <Background>
