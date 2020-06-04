@@ -10,6 +10,7 @@ type Donation @model @key(name: "byUser", fields: ["userID"]) {
   id: ID!
   userID: ID!
   user: User! @connection(fields: ["userID"])
+  organization: String # todo: have it be a seperate type
   trigger: String!
   initialAmount: Float!
   accumulatedAmount: Float!

@@ -12,6 +12,7 @@ export const getUser = /* GraphQL */ `
         items {
           id
           userID
+          organization
           trigger
           initialAmount
           accumulatedAmount
@@ -65,6 +66,7 @@ export const getDonation = /* GraphQL */ `
         createdAt
         updatedAt
       }
+      organization
       trigger
       initialAmount
       accumulatedAmount
@@ -93,6 +95,7 @@ export const listDonations = /* GraphQL */ `
           createdAt
           updatedAt
         }
+        organization
         trigger
         initialAmount
         accumulatedAmount

@@ -15,6 +15,7 @@ export const createUser = /* GraphQL */ `
         items {
           id
           userID
+          organization
           trigger
           initialAmount
           accumulatedAmount
@@ -44,6 +45,7 @@ export const updateUser = /* GraphQL */ `
         items {
           id
           userID
+          organization
           trigger
           initialAmount
           accumulatedAmount
@@ -73,6 +75,7 @@ export const deleteUser = /* GraphQL */ `
         items {
           id
           userID
+          organization
           trigger
           initialAmount
           accumulatedAmount
@@ -107,6 +110,7 @@ export const createDonation = /* GraphQL */ `
         createdAt
         updatedAt
       }
+      organization
       trigger
       initialAmount
       accumulatedAmount
@@ -136,6 +140,7 @@ export const updateDonation = /* GraphQL */ `
         createdAt
         updatedAt
       }
+      organization
       trigger
       initialAmount
       accumulatedAmount
@@ -165,6 +170,7 @@ export const deleteDonation = /* GraphQL */ `
         createdAt
         updatedAt
       }
+      organization
       trigger
       initialAmount
       accumulatedAmount
