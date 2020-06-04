@@ -43,6 +43,17 @@ app.get('/', (req, res) => {
     }
 
     res.send(props)
+});
+
+app.get('/:uid', (req, res) => {
+    if (donations[req.params.uid]) {
+        return res.send({
+            numberOfCalls: donations[req.params.uid].count,
+            keywords: donations[req.params.uid].tracking,
+        })
+    }
+
+    res.sendStatus(404)
 })
 
 app.post('/:uid', (req, res) => {
@@ -61,4 +72,4 @@ app.delete('/:uid', (req, res) => {
 });
 
 
-app.listen(8080)
+app.listen(80)
