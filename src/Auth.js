@@ -4,7 +4,7 @@ import TwitterLogin from "react-twitter-login";
 const Auth = ({ addUser }) => {
   const authHandler = (error, data) => {
     if (error) {
-      alert("Please log into Twitter!");
+      alert(error);
       return;
     }
 

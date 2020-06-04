@@ -1,11 +1,17 @@
 // Libraries
-import React from "react";
+import React, { useState } from "react";
+import Auth from "../../../../Auth";
+import Logout from "../../../../Logout";
 
 // Styles
 import { Container, Highlight } from "../../../../styles/index.style";
 import { Background, Tag } from "./header.style";
 
+require("dotenv").config();
+
 const Header = () => {
+  const [user, setUser] = useState(localStorage.user);
+
   return (
     <Background>
       <Container>
@@ -19,8 +25,11 @@ const Header = () => {
           hashtags and content.
         </p>
 
-        <p>Start donating today by</p>
-        <button>Signing in with Twitter</button>
+        {user ? (
+          <Logout removeUser={() => setUser(null)} />
+        ) : (
+          <Auth addUser={(x) => setUser(x)} />
+        )}
       </Container>
     </Background>
   );

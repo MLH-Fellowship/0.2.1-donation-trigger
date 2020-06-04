@@ -10,16 +10,9 @@ type Donation @model @key(name: "byUser", fields: ["userID"]) {
   id: ID!
   userID: ID!
   user: User! @connection(fields: ["userID"])
-  trigger: Trigger!
+  trigger: String!
   initialAmount: Float!
   accumulatedAmount: Float!
   numberOfCalls: Int!
   limit: Int!
-}
-
-enum Trigger {
-  RETWEET
-  TWEET
-  FOLLOW
-  REPLY
 }
