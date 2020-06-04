@@ -2,11 +2,21 @@ import styled from "styled-components";
 
 export const Background = styled.div`
   text-align: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  border: 2px solid black;
+  border-radius: 1rem;
 
   p {
-    font-size: 1.5rem;
+    font-size: 1rem;
 
-    margin-bottom: 1.2rem;
+    width: 17.5rem;
+
+    text-align: center;
+
+    margin: .75rem 0;
   }
 
   button {
@@ -14,7 +24,7 @@ export const Background = styled.div`
     border: none;
     border-radius: 5px;
 
-    font-size: 1.2rem;
+    font-size: 1rem;
     color: white;
 
     cursor: pointer;

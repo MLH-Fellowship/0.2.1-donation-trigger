@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-import { Wrapper, Submit } from "./addCharity.style";
+import { Wrapper, FormWrap, Submit } from "./addCharity.style";
 
 let charities = [
     {
@@ -35,14 +35,14 @@ function AddCharity(props) {
 
         setMode(false);
         setCharity();
-        setAmount(0);
+        setAmount();
         setHashtag("");
     }
 
     return (
         <Wrapper>
             {formMode &&
-                <div className="form-wrapper">
+                <FormWrap>
                     <select value={charity} onChange={(e) => setCharity(e.target.value)}>
                         <option name="Choose a Charity" value="">Choose a Charity</option>
                             {charities.map(item => (
@@ -56,13 +56,13 @@ function AddCharity(props) {
                         type="text" value={amount} 
                         placeholder="$0.01 / hashtag mention" 
                         onChange={(e)=>setAmount(e.target.value)} />
-                    <Submit className="submit" onClick={submit}>&#10003;</Submit>
-                    <Submit className="delete" onClick={() => setMode(false)}>X</Submit>
-                </div>
+                    <Submit onClick={submit}>&#10003;</Submit>
+                    <Submit onClick={() => setMode(false)}>X</Submit>
+                </FormWrap>
             }
             {!formMode &&
                 <div>
-                    <button className="add" onClick={() => setMode(true)}>&#x271A; Add a donation</button>
+                    <button onClick={() => setMode(true)}>&#x271A; Add a donation</button>
                 </div>
             }
         </Wrapper>

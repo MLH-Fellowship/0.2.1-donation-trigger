@@ -1,8 +1,8 @@
 // Libraries
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 
 // Styles
-import { Container } from "../../../../styles/index.style";
+import { Background } from './submissionComponent.style';
 
 import AddCharity from './AddCharity';
 import Charity from './Charity';
@@ -18,7 +18,7 @@ const SubmissionComponent = () => {
     function deleteCharity(index) {
       let char = [];
       for (var i = 0; i < charities.length; i++) {
-        if (i != index) {
+        if (i !== index) {
           char.push(charities[i]);
         }
       }
@@ -27,8 +27,7 @@ const SubmissionComponent = () => {
 
   return (
     <div>
-      <Container>
-        <div className="charities">
+      <Background>
             <Charity
               index={-1}
               item={{
@@ -41,8 +40,7 @@ const SubmissionComponent = () => {
               <Charity index={index} item={item} delete={deleteCharity} />
             ))}
             <AddCharity addChar={addCharity} />
-          </div>
-      </Container>
+      </Background>
     </div>
   );
 };
