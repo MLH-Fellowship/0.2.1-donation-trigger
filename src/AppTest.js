@@ -7,8 +7,8 @@ import { listUsers } from "./graphql/queries";
 // Styles
 import "./App.css";
 
-import AddCharity from "./components/AddCharity";
-import Charity from "./components/Charity";
+import AddCharity from "./components/containers/Legacy/AddCharity";
+import Charity from "./components/containers/Legacy/Charity";
 
 function App() {
   const [loggedIn, setLoggedIn] = useState(false);

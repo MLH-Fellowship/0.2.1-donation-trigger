@@ -5,6 +5,8 @@ import React from "react";
 import { Container, Highlight } from "../../../../styles/index.style";
 import { Background, Tag } from "./header.style";
 
+import Auth from '../../../../Auth';
+
 const Header = () => {
   return (
     <Background>
@@ -21,6 +23,7 @@ const Header = () => {
 
         <p>Start donating today by</p>
         <button>Signing in with Twitter</button>
+        {/* <Auth /> */}
       </Container>
     </Background>
   );

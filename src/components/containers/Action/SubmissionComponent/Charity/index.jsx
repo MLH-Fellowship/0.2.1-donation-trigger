@@ -1,7 +1,8 @@
 import React from 'react';
-import '../assets/charity.css';
 
-function AddCharity(props) {
+import { Background } from "./charity.style";
+
+function Charity(props) {
     function del() {
         props.delete(props.index);
     }
@@ -24,4 +25,4 @@ function AddCharity(props) {
     )
 }
 
-export default AddCharity
+export default Charity
