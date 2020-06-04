@@ -1,17 +1,19 @@
-# If This Then Donate (IFTTD)\* by Distributed Dodos (0.2.1)
+<h1 align="center">If This Then Donate (IFTTD)\* by Distributed Dodos (0.2.1)</h1>
 
-Micro donations based on twitter event triggers.
+<h3 align="center">Micro donations based on twitter event triggers.</h3>
 
-## Set-up Instructions
+<h4>Built with</h4>
 
-After cloning the repository, run `npm install` and then `npm start`. Open `http://localhost:3000/` to use our app.
+<p align="center"><img src="https://user-images.githubusercontent.com/16248113/83819990-643abe80-a699-11ea-8d10-dbbfe53eff3f.png" alt="Built With Javascript, React, Babel, AWS Amplify, and styled-components" /></p>
+
+<h4>In action:</h4>
+<p align="center"><img src="https://user-images.githubusercontent.com/16248113/83820631-29d22100-a69b-11ea-9bee-8a00f2316fec.png" alt="Built With Javascript, React, Babel, AWS Amplify, and styled-components" /></p>
 
 ## Features
 
-- Social media engagement does matter: make it matter more by setting microdonations based on twitter hashtags and content.
 - IFTTD allows users to create accounts and link certain donations and charities with Twitter hashtags. We automatically track your donation amount for you, and link you straight to the non-profit's website.
-
-\*=name tbd
+- A notification system will alert you when your hashtag has raised more money.
+- A Twitter bot will comment underneath user's tweets with the hashtag of your choice to thank them for their engagement.
 
 ## How to setup AWS Amplify
 
@@ -66,6 +68,7 @@ Refresh Twitter token and secret, and set `REACT_APP_CONSUMER_KEY` and `REACT_AP
 You will need to start the React application, as well as a test env of the API.
 
 ```
+npm install
 npm start
 amplify mock api
 ```
