@@ -1,4 +1,4 @@
-FROM node:latest
+FROM NODE:latest
 
 WORKDIR /usr/src/app
 
@@ -8,6 +8,11 @@ RUN npm install
 
 COPY . .
 
-EXPOSE 80
+EXPOSE 8080
+
+ENV CONSUMER_KEY=
+ENV CONSUMER_SECRET=
+ENV ACCESS_TOKEN=
+ENV ACCESS_TOKEN_SECRET=
 
 CMD ["npm", "start"]

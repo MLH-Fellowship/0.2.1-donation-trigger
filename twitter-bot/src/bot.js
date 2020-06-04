@@ -115,4 +115,4 @@ class TwitterBot {
     }
 }
 
-export default TwitterBot;
+module.exports = TwitterBot;
