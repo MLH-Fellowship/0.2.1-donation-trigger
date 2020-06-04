@@ -51,6 +51,16 @@ To access the Amplify console of the app, run
 amplify console
 ```
 
+## How to configure Twitter OAuth1
+
+In order to request access to another user's Twitter account via the API, [apply](https://developer.twitter.com/en/apply-for-access) for Twitter developer access.
+
+Create a Twitter app, and arbitrarily choose a callback URL to register under that app. If running locally, use `ngrok`, another tunneling tool, or any trustable origin.
+
+With that callback URL, set `CALLBACK_URL` in `.env`. The user is redirected to this URL, but the window is closed shortly after, satisfying the Twitter API.
+
+With the Twitter token and secret, set `CONSUMER_KEY` and `CONSUMER_SECRET`.
+
 ## How to run
 
 You will need to start the React application, as well as a test env of the API.
