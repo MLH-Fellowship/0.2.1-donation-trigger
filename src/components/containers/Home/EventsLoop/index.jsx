@@ -33,8 +33,8 @@ const EventsLoop = () => {
       <Container>
         <Card>
           <TextLoop interval="5000">
-            {loopText.map((item) => (
-              <p>
+            {loopText.map((item, i) => (
+              <p key={i}>
                 Donate <Highlight>${item.amount}</Highlight> to{" "}
                 <Highlight>{item.org}</Highlight> for every{" "}
                 <Highlight>{item.retweetAmount}</Highlight> retweets of{" "}

@@ -146,7 +146,7 @@ function App() {
   function deleteCharity(index) {
     let char = [];
     for (var i = 0; i < charities.length; i++) {
-      if (i != index) {
+      if (i !== index) {
         char.push(charities[i]);
       }
     }
