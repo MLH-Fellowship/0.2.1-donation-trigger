@@ -15,9 +15,9 @@ const Auth = ({ addUser }) => {
   return (
     <TwitterLogin
       authCallback={authHandler}
-      consumerKey={process.env.CONSUMER_KEY}
-      consumerSecret={process.env.CONSUMER_SECRET}
-      callbackUrl={process.env.CALLBACK_URL}
+      consumerKey={process.env.REACT_APP_CONSUMER_KEY}
+      consumerSecret={process.env.REACT_APP_CONSUMER_SECRET}
+      callbackUrl={process.env.REACT_APP_CALLBACK_URL}
     />
   );
 };
