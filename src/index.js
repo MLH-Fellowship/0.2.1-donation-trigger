@@ -17,8 +17,6 @@ import "./index.css";
 // Component Imports
 import App from "./App";
 
-// Load environment vars from .env
-require('dotenv').config();
 
 Amplify.configure(awsExports);
 

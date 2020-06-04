@@ -10,6 +10,7 @@ const Auth = ({ addUser }) => {
 
     localStorage.setItem("user", data);
     addUser(localStorage.user);
+    window.close()
   };
 
   return (
