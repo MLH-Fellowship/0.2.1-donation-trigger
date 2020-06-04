@@ -110,7 +110,7 @@ class TwitterBot {
      * 
      * @see https://github.com/ttezel/twit#using-the-streaming-api for a list of events
      */
-    filter(keywords) {
+    filter(...keywords) {
         return this.bot.stream('statuses/filter', { track: keywords.join(','), stall_warnings: true })
     }
 }

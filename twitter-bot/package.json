@@ -1,0 +1,17 @@
+{
+  "name": "0.2.1-twitter-bot",
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/app.js",
+  "scripts": {
+    "start": "node src/app.js",
+    "tsc": "tsc"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1",
+    "twit": "^2.2.11"
+  }
+}

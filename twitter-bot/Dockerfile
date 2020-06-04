@@ -1,0 +1,18 @@
+FROM NODE:latest
+
+WORKDIR /usr/src/app
+
+COPY package*.json ./
+
+RUN npm install
+
+COPY . .
+
+EXPOSE 8080
+
+ENV CONSUMER_KEY=
+ENV CONSUMER_SECRET=
+ENV ACCESS_TOKEN=
+ENV ACCESS_TOKEN_SECRET=
+
+CMD ["npm", "start"]
