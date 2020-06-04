@@ -1,157 +1,34 @@
 /* eslint-disable */
 // this is an auto generated file. This will be overwritten
 
-export const onCreateUser = /* GraphQL */ `
-  subscription OnCreateUser {
-    onCreateUser {
+export const onCreateTodo = /* GraphQL */ `
+  subscription OnCreateTodo {
+    onCreateTodo {
       id
-      fullName
-      handle
-      token
-      activeDonations {
-        items {
-          id
-          userID
-          trigger
-          initialAmount
-          accumulatedAmount
-          numberOfCalls
-          limit
-          createdAt
-          updatedAt
-        }
-        nextToken
-      }
+      name
+      description
       createdAt
       updatedAt
     }
   }
 `;
-export const onUpdateUser = /* GraphQL */ `
-  subscription OnUpdateUser {
-    onUpdateUser {
+export const onUpdateTodo = /* GraphQL */ `
+  subscription OnUpdateTodo {
+    onUpdateTodo {
       id
-      fullName
-      handle
-      token
-      activeDonations {
-        items {
-          id
-          userID
-          trigger
-          initialAmount
-          accumulatedAmount
-          numberOfCalls
-          limit
-          createdAt
-          updatedAt
-        }
-        nextToken
-      }
+      name
+      description
       createdAt
       updatedAt
     }
   }
 `;
-export const onDeleteUser = /* GraphQL */ `
-  subscription OnDeleteUser {
-    onDeleteUser {
+export const onDeleteTodo = /* GraphQL */ `
+  subscription OnDeleteTodo {
+    onDeleteTodo {
       id
-      fullName
-      handle
-      token
-      activeDonations {
-        items {
-          id
-          userID
-          trigger
-          initialAmount
-          accumulatedAmount
-          numberOfCalls
-          limit
-          createdAt
-          updatedAt
-        }
-        nextToken
-      }
-      createdAt
-      updatedAt
-    }
-  }
-`;
-export const onCreateDonation = /* GraphQL */ `
-  subscription OnCreateDonation {
-    onCreateDonation {
-      id
-      userID
-      user {
-        id
-        fullName
-        handle
-        token
-        activeDonations {
-          nextToken
-        }
-        createdAt
-        updatedAt
-      }
-      trigger
-      initialAmount
-      accumulatedAmount
-      numberOfCalls
-      limit
-      createdAt
-      updatedAt
-    }
-  }
-`;
-export const onUpdateDonation = /* GraphQL */ `
-  subscription OnUpdateDonation {
-    onUpdateDonation {
-      id
-      userID
-      user {
-        id
-        fullName
-        handle
-        token
-        activeDonations {
-          nextToken
-        }
-        createdAt
-        updatedAt
-      }
-      trigger
-      initialAmount
-      accumulatedAmount
-      numberOfCalls
-      limit
-      createdAt
-      updatedAt
-    }
-  }
-`;
-export const onDeleteDonation = /* GraphQL */ `
-  subscription OnDeleteDonation {
-    onDeleteDonation {
-      id
-      userID
-      user {
-        id
-        fullName
-        handle
-        token
-        activeDonations {
-          nextToken
-        }
-        createdAt
-        updatedAt
-      }
-      trigger
-      initialAmount
-      accumulatedAmount
-      numberOfCalls
-      limit
+      name
+      description
       createdAt
       updatedAt
     }
