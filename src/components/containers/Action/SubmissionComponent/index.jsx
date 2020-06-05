@@ -91,7 +91,7 @@ const SubmissionComponent = () => {
         <Charity
           index={-1}
           item={{
-            charity: ["Charity Name"],
+            organization: ["Charity Name"],
             hashtag: "Hashtag",
             amount: "Amount Raised",
             limit: "Limit",

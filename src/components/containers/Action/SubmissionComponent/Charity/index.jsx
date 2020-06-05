@@ -1,4 +1,8 @@
+// Libraries
 import React from "react";
+import CurrencyFormat from "react-currency-format";
+
+// Styles
 import { Background } from "./charity.style";
 
 const Charity = ({ index, item, deleteChar }) => {
@@ -9,11 +13,33 @@ const Charity = ({ index, item, deleteChar }) => {
   console.log(item);
 
   return (
-    <Background>
+    <Background isHeader={index === -1}>
       <p>{item.organization}</p>
       <p>{item.hashtag}</p>
-      <p>{item.amount}</p>
-      <p>{item.limit}</p>
+      {index === -1 ? (
+        <p>{item.amount}</p>
+      ) : (
+        <CurrencyFormat
+          value={item.amount}
+          displayType={"text"}
+          thousandSeparator={true}
+          prefix={"$"}
+          renderText={(value) => <p>{value}</p>}
+        />
+      )}
+
+      {index === -1 ? (
+        <p>{item.limit}</p>
+      ) : (
+        <CurrencyFormat
+          value={item.limit}
+          displayType={"text"}
+          thousandSeparator={true}
+          prefix={"$"}
+          renderText={(value) => <p>{value}</p>}
+        />
+      )}
+
       {!(index === -1) && (
         <p>
           <button

@@ -1,23 +1,9 @@
 // Libraries
 import React, { useState } from "react";
+import CurrencyFormat from "react-currency-format";
 
 // Styles
 import { Wrapper, FormWrap, Submit } from "./addCharity.style";
-
-let charities = [
-  {
-    name: "Reclaim the Block",
-    website: "https://secure.everyaction.com/zae4prEeKESHBy0MKXTIcQ2",
-  },
-  {
-    name: "Black Visions Collective",
-    website: "https://secure.everyaction.com/4omQDAR0oUiUagTu0EG-Ig2",
-  },
-  {
-    name: "Philly Bail Fund",
-    website: "https://www.phillybailfund.org/donate",
-  },
-];
 
 const AddCharity = ({ addChar }) => {
   const [formData, setFormData] = useState({
@@ -26,6 +12,21 @@ const AddCharity = ({ addChar }) => {
     amount: "",
     limit: "",
   });
+
+  const [charities] = useState([
+    {
+      name: "Reclaim the Block",
+      website: "https://secure.everyaction.com/zae4prEeKESHBy0MKXTIcQ2",
+    },
+    {
+      name: "Black Visions Collective",
+      website: "https://secure.everyaction.com/4omQDAR0oUiUagTu0EG-Ig2",
+    },
+    {
+      name: "Philly Bail Fund",
+      website: "https://www.phillybailfund.org/donate",
+    },
+  ]);
 
   const [formMode, setMode] = useState(false);
 
@@ -77,12 +78,22 @@ const AddCharity = ({ addChar }) => {
             onChange={(e) => handleInputChange(e)}
           />
 
-          <input
+          <CurrencyFormat
+            thousandSeparator={true}
+            prefix={"$"}
             name="amount"
             type="text"
             value={formData && formData.amount}
             placeholder="$0.01 / hashtag mention"
-            onChange={(e) => handleInputChange(e)}
+            onValueChange={(values) => {
+              // Destructuring the value without the '$' prefix and as a float
+              const { value } = values;
+
+              setFormData({
+                ...formData,
+                amount: value,
+              });
+            }}
           />
 
           <input
