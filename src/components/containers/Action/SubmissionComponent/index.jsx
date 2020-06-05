@@ -20,31 +20,31 @@ const SubmissionComponent = () => {
     fetchCharities();
     fetchUser();
 
-    setInterval(_ => {
-      // update the charities every 10 seconds
+    // setInterval(_ async => {
+    //   // update the charities every 10 seconds
 
-      try {
-        const userCharities = await API.graphql(graphqlOperation(listDonations));
+    //   try {
+    //     const userCharities = await API.graphql(graphqlOperation(listDonations));
 
-        console.log("Donations: " + userCharities.data.listDonations.items);
+    //     console.log("Donations: " + userCharities.data.listDonations.items);
 
-        const donations = userCharities.data.listDonations.items;
+    //     const donations = userCharities.data.listDonations.items;
 
-        for (const donation in donations) {
+    //     for (const donation in donations) {
 
-          const res = await axios.get(`https://cors-anywhere.herokuapp.com/http://ec2-52-91-182-97.compute-1.amazonaws.com/${donation.id}`);
-          const data = await res.json()
+    //       const res = await axios.get(`https://cors-anywhere.herokuapp.com/http://ec2-52-91-182-97.compute-1.amazonaws.com/${donation.id}`);
+    //       const data = await res.json()
 
-          donation.numberOfCalls = data.numberOfCalls;
-        }
+    //       donation.numberOfCalls = data.numberOfCalls;
+    //     }
 
-        console.log(donations)
+    //     console.log(donations)
 
-        setCharities(donations);
-      } catch (err) {
-        console.error(err);
-      }
-    }, 10000);
+    //     setCharities(donations);
+    //   } catch (err) {
+    //     console.error(err);
+    //   }
+    // }, 10000);
   }, []);
 
   const fetchCharities = async () => {
