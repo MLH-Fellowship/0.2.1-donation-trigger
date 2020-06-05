@@ -22,7 +22,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "setup": "npm i && bash bootstrap.sh"
   },
   "eslintConfig": {
     "extends": "react-app"
