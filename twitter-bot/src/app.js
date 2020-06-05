@@ -1,10 +1,14 @@
 const twitter = require('./bot');
 const express = require('express');
+const morgan = require('morgan')
 
 const bot = new twitter();
 const app = express()
 
 const donations = {};
+
+app.use(morgan('combined'))
+
 
 /**
  * Track a list of hastags for a given user
