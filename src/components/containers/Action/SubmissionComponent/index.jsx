@@ -20,6 +20,8 @@ const SubmissionComponent = () => {
     fetchUser();
   }, []);
 
+  console.log(charities);
+
   const fetchCharities = async () => {
     try {
       const userCharities = await API.graphql(graphqlOperation(listDonations));
