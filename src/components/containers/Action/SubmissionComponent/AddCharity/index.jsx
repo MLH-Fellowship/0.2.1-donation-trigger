@@ -31,8 +31,10 @@ const AddCharity = ({ addChar }) => {
   const [formMode, setMode] = useState(false);
 
   function submit() {
+    let org = formData.organization.split(",")
     let newEntry = {
-      organization: formData.organization.split(",")[0],
+      organization: org[0],
+      website: org[1],
       amount: parseFloat(formData.amount),
       limit: parseInt(formData.limit),
       hashtag: formData.hashtag,
