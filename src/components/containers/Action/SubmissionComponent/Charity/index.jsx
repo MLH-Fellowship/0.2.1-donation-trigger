@@ -44,12 +44,14 @@ const Charity = ({ index, item, deleteChar }) => {
         <p>
           <button
             onClick={() => {
-              window.open(item.charity[1], "_blank");
+              window.open(item.organization[1], "_blank");
             }}
           >
             Donate!
           </button>
-          <button onClick={del}>X</button>
+          <button onClick={del} style={{ marginLeft: "0.5rem" }}>
+            X
+          </button>
         </p>
       )}
       {index === -1 && <p></p>}

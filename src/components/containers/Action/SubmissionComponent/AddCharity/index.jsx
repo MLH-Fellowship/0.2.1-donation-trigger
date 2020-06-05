@@ -110,7 +110,9 @@ const AddCharity = ({ addChar }) => {
       )}
       {!formMode && (
         <div>
-          <button onClick={() => setMode(true)}>&#x271A; Add a donation</button>
+          <button onClick={() => setMode(true)}>
+            &#x271A; Add a new donation
+          </button>
         </div>
       )}
     </Wrapper>

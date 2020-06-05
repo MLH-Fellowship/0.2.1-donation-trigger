@@ -10,28 +10,30 @@ export const Wrapper = styled.div`
   }
 
   button {
-    background-color: #1da1f2;
+    background-color: var(--color-main);
     border: none;
     border-radius: 5px;
 
     font-size: 1.2rem;
-    color: white;
+    font-weight: 500;
+    color: black;
 
     cursor: pointer;
 
     padding: 0.5rem 1.5rem;
-    margin: .5rem;
+    margin: 0.5rem;
   }
 
-  input[type=text], select {
+  input[type="text"],
+  select {
     width: 15rem;
-    padding: .1rem .2rem;
-    margin: .2rem .1rem;
+    padding: 0.1rem 0.2rem;
+    margin: 0.2rem 0.1rem;
     display: inline-block;
     border: 1px solid #ccc;
     border-radius: 4px;
     box-sizing: border-box;
-   }
+  }
 `;
 
 export const FormWrap = styled.div`
@@ -44,14 +46,14 @@ export const FormWrap = styled.div`
 `;
 
 export const Submit = styled.div`
-    background-color: #1da1f2;
-    border: none;
-    border-radius: 5px;
+  background-color: #1da1f2;
+  border: none;
+  border-radius: 5px;
 
-    font-size: 1.2rem;
-    color: white;
+  font-size: 1.2rem;
+  color: white;
 
-    cursor: pointer;
+  cursor: pointer;
 
-    padding: .25rem .75rem;
+  padding: 0.25rem 0.75rem;
 `;
