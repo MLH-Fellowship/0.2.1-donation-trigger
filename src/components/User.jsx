@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react'
 import { API, graphqlOperation } from 'aws-amplify'
 import { listUsers } from '../graphql/queries'
 
-const User = ({ children }) => {
+const User = ({ children, history }) => {
   const [userData, setUserData] = useState()
 
   useEffect(() => {
@@ -15,11 +15,11 @@ const User = ({ children }) => {
       const userId = localStorage.getItem('user_id')
 
       // Fetching all users from our database
-      const userData = await API.graphql(graphqlOperation(listUsers))
+      const response = await API.graphql(graphqlOperation(listUsers))
 
       // Filtering users based on the twitter id and setting is as the data
       setUserData(
-        userData.data.listUsers.items.filter(
+        response.data.listUsers.items.filter(
           (user) => user.twitterId === userId
         )
       )
@@ -30,9 +30,11 @@ const User = ({ children }) => {
     }
   }
 
-  return (
-    <React.Fragment>{userData ? children(userData) : children}</React.Fragment>
-  )
+  if (!userData) {
+    window.location.href = '/'
+  } else {
+    return <React.Fragment>{children(userData)}</React.Fragment>
+  }
 }
 
 export default User
