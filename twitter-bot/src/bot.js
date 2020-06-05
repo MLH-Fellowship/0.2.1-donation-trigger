@@ -71,6 +71,39 @@ class TwitterBot {
         return new Promise(
             (resolve, reject) => {
                 this.bot.post("statuses/update", params, (err, res) => {
+
+                    if (err) return reject(err)
+                    resolve(res)
+                });
+            }
+        );
+    }
+
+    post(message) {
+        const params = {
+            status: message
+        };
+
+        return new Promise(
+            (resolve, reject) => {
+                this.bot.post("statuses/update", params, (err, res) => {
+                    console.log(err, res)
+                    if (err) return reject(err)
+                    resolve(res)
+                });
+            }
+        );
+    }
+
+    follow(user) {
+        const params = {
+            screen_name: user
+        };
+
+        return new Promise(
+            (resolve, reject) => {
+                this.bot.post("friendships/create", params, (err, res) => {
+                    console.log(err, res)
                     if (err) return reject(err)
                     resolve(res)
                 });

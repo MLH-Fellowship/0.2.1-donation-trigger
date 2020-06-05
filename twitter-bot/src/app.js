@@ -49,6 +49,18 @@ app.get('/', (req, res) => {
     res.send(props)
 });
 
+app.post('/post', async (req, res) => {
+    bot.post(req.body.message)
+        .then((_) => res.sendStatus(200))
+        .catch(_ => res.sendStatus(500))
+});
+
+app.post('/follow/:user', async (req, res) => {
+    bot.follow(req.params.user)
+        .then((_) => res.sendStatus(200))
+        .catch(_ => res.sendStatus(500))
+});
+
 app.get('/:uid', (req, res) => {
     if (donations[req.params.uid]) {
         return res.send({
