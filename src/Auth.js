@@ -13,8 +13,6 @@ const Auth = ({ history }) => {
       return;
     }
 
-    console.log(data);
-
     // Save data to local storage
     localStorage.setItem("user_id", data.user_id);
     localStorage.setItem("user_name", data.screen_name);
