@@ -1,4 +1,4 @@
-<h1 align="center">If This Then Donate (IFTTD)\* by Distributed Dodos (0.2.1)</h1>
+<h1 align="center">If This Then Donate (IFTTD) by Distributed Dodos (0.2.1)</h1>
 
 <h3 align="center">Micro donations based on twitter event triggers.</h3>
 
