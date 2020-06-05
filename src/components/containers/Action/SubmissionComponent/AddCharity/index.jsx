@@ -1,5 +1,7 @@
+// Libraries
 import React, { useState } from "react";
 
+// Styles
 import { Wrapper, FormWrap, Submit } from "./addCharity.style";
 
 let charities = [
@@ -17,33 +19,46 @@ let charities = [
   },
 ];
 
-function AddCharity(props) {
+const AddCharity = ({ addChar }) => {
+  const [formData, setFormData] = useState({
+    organization: "",
+    hashtag: "",
+    amount: "",
+    limit: "",
+  });
+
   const [formMode, setMode] = useState(false);
-  const [charity, setCharity] = useState();
-  const [amount, setAmount] = useState();
-  const [hashtag, setHashtag] = useState("");
 
   function submit() {
     let newEntry = {
-      charity: charity.split(","),
-      amount: amount,
-      hashtag: hashtag,
+      organization: formData.organization.split(",")[0],
+      amount: parseFloat(formData.amount),
+      limit: parseInt(formData.limit),
+      hashtag: formData.hashtag,
     };
-    console.log(charity.split(","));
 
-    props.addChar(newEntry);
-
+    addChar(newEntry);
     setMode(false);
-    setCharity();
-    setAmount();
-    setHashtag("");
   }
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+
+    setFormData({
+      ...formData,
+      [name]: value,
+    });
+  };
 
   return (
     <Wrapper>
       {formMode && (
         <FormWrap>
-          <select value={charity} onChange={(e) => setCharity(e.target.value)}>
+          <select
+            name="organization"
+            value={formData && formData.organization}
+            onChange={(e) => handleInputChange(e)}
+          >
             <option name="Choose a Charity" value="">
               Choose a Charity
             </option>
@@ -53,19 +68,32 @@ function AddCharity(props) {
               </option>
             ))}
           </select>
+
           <input
+            name="hashtag"
             type="text"
-            value={hashtag}
+            value={formData && formData.hashtag}
             placeholder="eg. #blm"
-            onChange={(e) => setHashtag(e.target.value)}
-          ></input>
-          <input
-            type="text"
-            value={amount}
-            placeholder="$0.01 / hashtag mention"
-            onChange={(e) => setAmount(e.target.value)}
+            onChange={(e) => handleInputChange(e)}
           />
-          <Submit onClick={() => submit}>&#10003;</Submit>
+
+          <input
+            name="amount"
+            type="text"
+            value={formData && formData.amount}
+            placeholder="$0.01 / hashtag mention"
+            onChange={(e) => handleInputChange(e)}
+          />
+
+          <input
+            name="limit"
+            type="text"
+            value={formData && formData.limit}
+            placeholder="limit"
+            onChange={(e) => handleInputChange(e)}
+          />
+
+          <Submit onClick={() => submit()}>&#10003;</Submit>
           <Submit onClick={() => setMode(false)}>X</Submit>
         </FormWrap>
       )}
@@ -76,6 +104,6 @@ function AddCharity(props) {
       )}
     </Wrapper>
   );
-}
+};
 
 export default AddCharity;

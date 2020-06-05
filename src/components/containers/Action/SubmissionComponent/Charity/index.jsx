@@ -10,9 +10,10 @@ const Charity = ({ index, item, deleteChar }) => {
 
   return (
     <Background>
-      <p>{item.charity}</p>
+      <p>{item.organization}</p>
       <p>{item.hashtag}</p>
       <p>{item.amount}</p>
+      <p>{item.limit}</p>
       {!(index === -1) && (
         <p>
           <button
