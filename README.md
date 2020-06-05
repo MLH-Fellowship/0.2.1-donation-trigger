@@ -81,3 +81,39 @@ You will need to start the React application, as well as a test env of the API.
 npm install
 npm start
 ```
+
+## Code structure
+
+<big><pre>
+📂 [amplify](./amplify)
+├── 📂 [.config](./amplify/.config)
+├── 📂 [backend](./amplify/backend)
+│   ├── 📂 [api](./amplify/backend/api)
+│   │   ├── 📂 [021donationtrigger](./amplify/backend/api/021donationtrigger)
+│   │   │   ├── 📂 [resolvers](./amplify/backend/api/021donationtrigger/resolvers)
+│   │   │   ├── 📂 [stacks](./amplify/backend/api/021donationtrigger/stacks)
+📂 [public](./public) # Supplemental assets or resources, or static files
+📂 [src](./src) # Source files
+├── 📂 [assets](./src/assets)
+├── 📂 [components](./src/components)
+│   ├── 📂 [containers](./src/components/containers)
+│   │   ├── 📂 [Action](./src/components/containers/Action)
+│   │   │   ├── 📂 [Greeting](./src/components/containers/Action/Greeting)
+│   │   │   ├── 📂 [SubmissionComponent](./src/components/containers/Action/SubmissionComponent)
+│   │   │   │   ├── 📂 [AddCharity](./src/components/containers/Action/SubmissionComponent/AddCharity)
+│   │   │   │   ├── 📂 [Charity](./src/components/containers/Action/SubmissionComponent/Charity)
+│   │   ├── 📂 [Home](./src/components/containers/Home)
+│   │   │   ├── 📂 [CausesList](./src/components/containers/Home/CausesList)
+│   │   │   │   ├── 📂 [CausesListItem](./src/components/containers/Home/CausesList/CausesListItem)
+│   │   │   ├── 📂 [EventsLoop](./src/components/containers/Home/EventsLoop)
+│   │   │   ├── 📂 [Header](./src/components/containers/Home/Header)
+│   │   ├── 📂 [Legacy](./src/components/containers/Legacy)
+├── 📂 [graphql](./src/graphql)
+├── 📂 [pages](./src/pages)
+├── 📂 [styles](./src/styles)
+├── 📂 [utils](./src/utils)
+</pre></big>
+
+Big shoutout to the team over at [0.2.1-readme-dirs](https://github.com/MLH-Fellowship/0.2.1-readme-dirs) for greating this generated code structure.
+
+Generate your own project structure [here](https://project-structure-readme.netlify.app)
