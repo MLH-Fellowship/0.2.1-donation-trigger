@@ -51,15 +51,25 @@ To access the Amplify console of the app, run
 amplify console
 ```
 
+If you want to test the GraphQL api with a mock database, run
+
+```
+amplify mock api
+```
+
+It will generate an instance where you can access a sandbox environment for testing. If you have the mock api running alongside the web app, the app will directly grab from the fake db.
+
 ## How to configure Twitter OAuth1
 
 In order to request access to another user's Twitter account via the API, [apply](https://developer.twitter.com/en/apply-for-access) for Twitter developer access.
 
 Create a Twitter app, and choose a callback URL to register under that app. If running locally, use `ngrok` or another tunneling tool, and register this origin. This URL needs to be within the primary origin.
 
-With that callback URL, set `REACT_APP_CALLBACK_URL` in `.env`. The user is redirected to this URL, but the window is closed shortly after, satisfying the Twitter API. 
+With that callback URL, set `REACT_APP_CALLBACK_URL` in `.env`. The user is redirected to this URL, but the window is closed shortly after, satisfying the Twitter API.
 
 Refresh Twitter token and secret, and set `REACT_APP_CONSUMER_KEY` and `REACT_APP_CONSUMER_SECRET`.
+
+**Reminder:** Once you update the .env make sure to always restart the react server.
 
 ## How to run
 
@@ -67,5 +77,4 @@ You will need to start the React application, as well as a test env of the API.
 
 ```
 npm start
-amplify mock api
 ```
