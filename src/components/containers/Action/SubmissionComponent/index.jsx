@@ -3,7 +3,6 @@ import React, { useState, useEffect } from "react";
 import { API, graphqlOperation } from "aws-amplify";
 import { createDonation, deleteDonation } from "../../../../graphql/mutations";
 import { listUsers, listDonations } from "../../../../graphql/queries";
-import axios from 'axios';
 
 // Styles
 import { Background } from "./submissionComponent.style";
@@ -29,17 +28,7 @@ const SubmissionComponent = () => {
 
       const donations = userCharities.data.listDonations.items;
 
-      console.log("DONATIONS:", donations);
-
-      for (const donation in donations) {
-
-        const res = await axios.get(`https://cors-anywhere.herokuapp.com/http://ec2-52-91-182-97.compute-1.amazonaws.com/${donation.id}`);
-        const data = await res.json()
-
-        donation.numberOfCalls = data.numberOfCalls;
-      }
-
-      console.log("DONATIONS:", donations);
+      console.log(donations)
 
       setCharities(donations);
     } catch (err) {
@@ -62,16 +51,14 @@ const SubmissionComponent = () => {
         )
       );
     } catch (err) {
-      console.error(err);
+      console.err(err);
     }
   };
 
   const addCharity = async (charityObj) => {
-    console.log("ADDING CHARITY")
-
     try {
       // Adding the other required and standard values from
-      const newDonation = {
+      let newDonation = {
         ...charityObj,
         userID: userData && userData[0].id,
         accumulatedAmount: 0.0,
@@ -82,13 +69,6 @@ const SubmissionComponent = () => {
         graphqlOperation(createDonation, { input: newDonation })
       );
 
-      // TODO: How do I get the donation id from amplify?
-      const res = await axios.post(`https://cors-anywhere.herokuapp.com/http://ec2-52-91-182-97.compute-1.amazonaws.com/${newDonation.id}`, {
-        keywords: [
-          newDonation.hashtag
-        ]
-      });
-
       setCharities([...charities, newDonation]);
 
       console.log(charities);
@@ -98,22 +78,14 @@ const SubmissionComponent = () => {
   };
 
   const deleteCharity = async (donationId) => {
-    console.log("DELETING CHARITY")
-
     try {
-      const requestOptions = {
-        method: 'DELETE',
-      };
-
-      await fetch(`https://cors-anywhere.herokuapp.com/http://ec2-52-91-182-97.compute-1.amazonaws.com/${donationId}`, requestOptions);
-
       await API.graphql(
         graphqlOperation(deleteDonation, { input: { id: String(donationId) } })
       );
 
       fetchCharities();
     } catch (err) {
-      console.error(err);
+      console.log(err);
     }
   };
 
