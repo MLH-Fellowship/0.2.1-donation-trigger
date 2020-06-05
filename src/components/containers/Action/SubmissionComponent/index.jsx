@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 import { API, graphqlOperation } from "aws-amplify";
 import { createDonation, deleteDonation } from "../../../../graphql/mutations";
 import { listUsers, listDonations } from "../../../../graphql/queries";
+import axios from 'axios';
 
 // Styles
 import { Background } from "./submissionComponent.style";
@@ -18,6 +19,32 @@ const SubmissionComponent = () => {
   useEffect(() => {
     fetchCharities();
     fetchUser();
+
+    setInterval(_ => {
+      // update the charities every 10 seconds
+
+      try {
+        const userCharities = await API.graphql(graphqlOperation(listDonations));
+
+        console.log("Donations: " + userCharities.data.listDonations.items);
+
+        const donations = userCharities.data.listDonations.items;
+
+        for (const donation in donations) {
+
+          const res = await axios.get(`https://cors-anywhere.herokuapp.com/http://ec2-52-91-182-97.compute-1.amazonaws.com/${donation.id}`);
+          const data = await res.json()
+
+          donation.numberOfCalls = data.numberOfCalls;
+        }
+
+        console.log(donations)
+
+        setCharities(donations);
+      } catch (err) {
+        console.error(err);
+      }
+    }, 10000);
   }, []);
 
   const fetchCharities = async () => {
@@ -27,6 +54,14 @@ const SubmissionComponent = () => {
       console.log("Donations: " + userCharities.data.listDonations.items);
 
       const donations = userCharities.data.listDonations.items;
+
+      for (const donation in donations) {
+
+        const res = await axios.get(`https://cors-anywhere.herokuapp.com/http://ec2-52-91-182-97.compute-1.amazonaws.com/${donation.id}`);
+        const data = await res.json()
+
+        donation.numberOfCalls = data.numberOfCalls;
+      }
 
       console.log(donations)
 
@@ -69,6 +104,13 @@ const SubmissionComponent = () => {
         graphqlOperation(createDonation, { input: newDonation })
       );
 
+      // TODO: How do I get the donation id from amplify?
+      const res = await axios.post(`https://cors-anywhere.herokuapp.com/http://ec2-52-91-182-97.compute-1.amazonaws.com/${newDonation.id}`, {
+        keywords: [
+          newDonation.hashtag
+        ]
+      });
+
       setCharities([...charities, newDonation]);
 
       console.log(charities);
@@ -79,6 +121,9 @@ const SubmissionComponent = () => {
 
   const deleteCharity = async (donationId) => {
     try {
+
+      await axios.delete(`https://cors-anywhere.herokuapp.com/http://ec2-52-91-182-97.compute-1.amazonaws.com/${donationId}`);
+
       await API.graphql(
         graphqlOperation(deleteDonation, { input: { id: String(donationId) } })
       );
