@@ -1,34 +1,157 @@
 /* eslint-disable */
 // this is an auto generated file. This will be overwritten
 
-export const onCreateTodo = /* GraphQL */ `
-  subscription OnCreateTodo {
-    onCreateTodo {
+export const onCreateUser = /* GraphQL */ `
+  subscription OnCreateUser {
+    onCreateUser {
       id
-      name
-      description
+      twitterId
+      handle
+      donations {
+        items {
+          id
+          userID
+          organization
+          hashtags
+          amount
+          accumulatedAmount
+          numberOfCalls
+          limit
+          createdAt
+          updatedAt
+        }
+        nextToken
+      }
       createdAt
       updatedAt
     }
   }
 `;
-export const onUpdateTodo = /* GraphQL */ `
-  subscription OnUpdateTodo {
-    onUpdateTodo {
+export const onUpdateUser = /* GraphQL */ `
+  subscription OnUpdateUser {
+    onUpdateUser {
       id
-      name
-      description
+      twitterId
+      handle
+      donations {
+        items {
+          id
+          userID
+          organization
+          hashtags
+          amount
+          accumulatedAmount
+          numberOfCalls
+          limit
+          createdAt
+          updatedAt
+        }
+        nextToken
+      }
       createdAt
       updatedAt
     }
   }
 `;
-export const onDeleteTodo = /* GraphQL */ `
-  subscription OnDeleteTodo {
-    onDeleteTodo {
+export const onDeleteUser = /* GraphQL */ `
+  subscription OnDeleteUser {
+    onDeleteUser {
       id
-      name
-      description
+      twitterId
+      handle
+      donations {
+        items {
+          id
+          userID
+          organization
+          hashtags
+          amount
+          accumulatedAmount
+          numberOfCalls
+          limit
+          createdAt
+          updatedAt
+        }
+        nextToken
+      }
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onCreateDonation = /* GraphQL */ `
+  subscription OnCreateDonation {
+    onCreateDonation {
+      id
+      userID
+      user {
+        id
+        twitterId
+        handle
+        donations {
+          nextToken
+        }
+        createdAt
+        updatedAt
+      }
+      organization
+      hashtags
+      amount
+      accumulatedAmount
+      numberOfCalls
+      limit
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onUpdateDonation = /* GraphQL */ `
+  subscription OnUpdateDonation {
+    onUpdateDonation {
+      id
+      userID
+      user {
+        id
+        twitterId
+        handle
+        donations {
+          nextToken
+        }
+        createdAt
+        updatedAt
+      }
+      organization
+      hashtags
+      amount
+      accumulatedAmount
+      numberOfCalls
+      limit
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onDeleteDonation = /* GraphQL */ `
+  subscription OnDeleteDonation {
+    onDeleteDonation {
+      id
+      userID
+      user {
+        id
+        twitterId
+        handle
+        donations {
+          nextToken
+        }
+        createdAt
+        updatedAt
+      }
+      organization
+      hashtags
+      amount
+      accumulatedAmount
+      numberOfCalls
+      limit
       createdAt
       updatedAt
     }

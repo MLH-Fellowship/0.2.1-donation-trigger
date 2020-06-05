@@ -1,25 +1,18 @@
 type User @model {
   id: ID!
-  fullName: String!
+  twitterId: String!
   handle: String!
-  token: String!
-  activeDonations: [Donation]! @connection(keyName: "byUser", fields: ["id"])
+  donations: [Donation]! @connection(keyName: "byUser", fields: ["id"])
 }
 
 type Donation @model @key(name: "byUser", fields: ["userID"]) {
   id: ID!
   userID: ID!
   user: User! @connection(fields: ["userID"])
-  trigger: Trigger!
-  initialAmount: Float!
+  organization: String # todo: have it be a seperate type
+  hashtags: [String]
+  amount: Float!
   accumulatedAmount: Float!
   numberOfCalls: Int!
   limit: Int!
-}
-
-enum Trigger {
-  RETWEET
-  TWEET
-  FOLLOW
-  REPLY
 }
