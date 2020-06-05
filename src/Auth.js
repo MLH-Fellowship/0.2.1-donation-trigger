@@ -4,6 +4,7 @@ import TwitterLogin from "react-twitter-login";
 import { withRouter } from "react-router-dom";
 
 import { API, graphqlOperation } from "aws-amplify";
+import { listUsers } from "./graphql/queries";
 import { createUser } from "./graphql/mutations";
 
 const Auth = ({ history }) => {
@@ -26,7 +27,11 @@ const Auth = ({ history }) => {
     };
 
     try {
-      await API.graphql(graphqlOperation(createUser, { input: user }));
+      const users = await API.graphql(graphqlOperation(listUsers))
+      const u = users.data.listUsers.items.filter((x) => { return x.screen_name === user.screen_name })
+      if (!u) { 
+        await API.graphql(graphqlOperation(createUser, { input: user })) 
+      };
     } catch (err) {
       console.error(err);
     }

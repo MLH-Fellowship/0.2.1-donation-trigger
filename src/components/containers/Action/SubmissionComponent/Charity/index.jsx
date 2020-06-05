@@ -44,7 +44,7 @@ const Charity = ({ index, item, deleteChar }) => {
         <p>
           <button
             onClick={() => {
-              window.open(item.organization[1], "_blank");
+              window.open(item.website, "_blank");
             }}
           >
             Donate!

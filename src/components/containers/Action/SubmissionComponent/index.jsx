@@ -28,6 +28,8 @@ const SubmissionComponent = () => {
 
       const donations = userCharities.data.listDonations.items;
 
+      console.log(donations)
+
       setCharities(donations);
     } catch (err) {
       console.error(err);
