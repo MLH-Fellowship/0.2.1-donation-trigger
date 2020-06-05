@@ -29,8 +29,8 @@ const Auth = ({ history }) => {
     try {
       const users = await API.graphql(graphqlOperation(listUsers))
       const u = users.data.listUsers.items.filter((x) => { return x.screen_name === user.screen_name })
-      if (!u) { 
-        await API.graphql(graphqlOperation(createUser, { input: user })) 
+      if (!u) {
+        await API.graphql(graphqlOperation(createUser, { input: user }))
       };
     } catch (err) {
       console.error(err);

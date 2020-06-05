@@ -92,7 +92,6 @@ export const listDonations = /* GraphQL */ `
           updatedAt
         }
         organization
-        website
         hashtag
         amount
         accumulatedAmount
