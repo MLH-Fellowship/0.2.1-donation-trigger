@@ -88,6 +88,15 @@ const SubmissionComponent = () => {
   return (
     <div>
       <Background>
+        <p
+          style={{
+            textAlign: "center",
+            fontSize: "1.3rem",
+            marginBottom: "0.5rem",
+          }}
+        >
+          Your donations:
+        </p>
         <Charity
           index={-1}
           item={{
