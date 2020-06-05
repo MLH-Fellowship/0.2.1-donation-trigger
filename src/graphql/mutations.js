@@ -15,7 +15,7 @@ export const createUser = /* GraphQL */ `
           id
           userID
           organization
-          hashtags
+          hashtag
           amount
           accumulatedAmount
           numberOfCalls
@@ -44,7 +44,7 @@ export const updateUser = /* GraphQL */ `
           id
           userID
           organization
-          hashtags
+          hashtag
           amount
           accumulatedAmount
           numberOfCalls
@@ -73,7 +73,7 @@ export const deleteUser = /* GraphQL */ `
           id
           userID
           organization
-          hashtags
+          hashtag
           amount
           accumulatedAmount
           numberOfCalls
@@ -107,7 +107,7 @@ export const createDonation = /* GraphQL */ `
         updatedAt
       }
       organization
-      hashtags
+      hashtag
       amount
       accumulatedAmount
       numberOfCalls
@@ -136,7 +136,7 @@ export const updateDonation = /* GraphQL */ `
         updatedAt
       }
       organization
-      hashtags
+      hashtag
       amount
       accumulatedAmount
       numberOfCalls
@@ -165,7 +165,7 @@ export const deleteDonation = /* GraphQL */ `
         updatedAt
       }
       organization
-      hashtags
+      hashtag
       amount
       accumulatedAmount
       numberOfCalls

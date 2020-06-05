@@ -6,8 +6,14 @@ export const Background = styled.div`
   flex-direction: row;
   justify-content: space-around;
   align-items: center;
-  border: 2px solid black;
-  border-radius: 1rem;
+  border-left: ${({ isHeader }) => !isHeader && "5px solid var(--color-main)"};
+  border-radius: 5px;
+
+  margin-bottom: 1rem;
+
+  -webkit-box-shadow: 0px 5px 30px -7px rgba(173, 173, 173, 0.54);
+  -moz-box-shadow: 0px 5px 30px -7px rgba(173, 173, 173, 0.54);
+  box-shadow: 0px 5px 30px -7px rgba(173, 173, 173, 0.54);
 
   p {
     font-size: 1rem;
@@ -16,16 +22,17 @@ export const Background = styled.div`
 
     text-align: center;
 
-    margin: .75rem 0;
+    margin: 0.75rem 0;
   }
 
   button {
-    background-color: #1da1f2;
+    background-color: black;
     border: none;
     border-radius: 5px;
 
     font-size: 1rem;
-    color: white;
+    font-weight: 500;
+    color: var(--color-main);
 
     cursor: pointer;
 

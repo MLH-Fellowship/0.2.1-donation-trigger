@@ -1,12 +1,16 @@
+// Libraries
 import React from "react";
+import { withRouter } from "react-router-dom";
 
-const Logout = ({ removeUser }) => {
+const Logout = ({ history }) => {
   return (
     <button
       onClick={() => {
         localStorage.removeItem("user_id");
         localStorage.removeItem("user_name");
-        removeUser();
+
+        // Send user back to home screen
+        history.push("/");
       }}
     >
       Logout
@@ -14,4 +18,4 @@ const Logout = ({ removeUser }) => {
   );
 };
 
-export default Logout;
+export default withRouter(Logout);

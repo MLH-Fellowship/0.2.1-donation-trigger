@@ -10,7 +10,7 @@ type Donation @model @key(name: "byUser", fields: ["userID"]) {
   userID: ID!
   user: User! @connection(fields: ["userID"])
   organization: String # todo: have it be a seperate type
-  hashtags: [String]
+  hashtag: String!
   amount: Float!
   accumulatedAmount: Float!
   numberOfCalls: Int!

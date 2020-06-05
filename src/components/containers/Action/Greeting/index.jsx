@@ -2,23 +2,23 @@
 import React from "react";
 
 // Styles
+import Logout from "../../../../Logout";
 import { Container, Highlight } from "../../../../styles/index.style";
-import { Background, Tag } from "./greeting.style";
-
-import Auth from "../../../../Auth";
+import { Background, TextContainer } from "./greeting.style";
 
 const Greeting = ({ user }) => {
-  const { handle, donations } = user;
+  const { handle } = user;
 
   return (
     <Background>
       <Container>
-        <Tag>If This Then Donate</Tag>
+        <TextContainer>
+          <h1>
+            Welcome, <Highlight>@{handle}</Highlight>
+          </h1>
 
-        <h1>
-          Welcome, <Highlight>@{handle}</Highlight>
-        </h1>
-        <p>Here are your current donations:</p>
+          <Logout />
+        </TextContainer>
       </Container>
     </Background>
   );
