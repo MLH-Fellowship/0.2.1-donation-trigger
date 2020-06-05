@@ -26,13 +26,13 @@ export const Background = styled.div`
   }
 
   button {
-    background-color: var(--color-main);
+    background-color: black;
     border: none;
     border-radius: 5px;
 
     font-size: 1rem;
     font-weight: 500;
-    color: black;
+    color: var(--color-main);
 
     cursor: pointer;
 

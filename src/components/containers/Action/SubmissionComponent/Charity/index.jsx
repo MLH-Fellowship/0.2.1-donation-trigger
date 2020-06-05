@@ -7,10 +7,10 @@ import { Background } from "./charity.style";
 
 const Charity = ({ index, item, deleteChar }) => {
   const del = () => {
-    deleteChar(index);
+    deleteChar(item.id);
   };
 
-  console.log(item);
+  console.log(item.id);
 
   return (
     <Background isHeader={index === -1}>

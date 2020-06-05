@@ -40,8 +40,8 @@ export const FormWrap = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-around;
-  border: 2px solid black;
-  border-radius: 1rem;
+  border: 2px solid var(--color-main);
+  border-radius: 5px;
   padding: 1rem;
 `;
 

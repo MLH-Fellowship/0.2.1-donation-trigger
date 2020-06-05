@@ -75,15 +75,17 @@ const SubmissionComponent = () => {
     }
   };
 
-  function deleteCharity(index) {
-    let char = [];
-    for (var i = 0; i < charities.length; i++) {
-      if (i !== index) {
-        char.push(charities[i]);
-      }
+  const deleteCharity = async (donationId) => {
+    try {
+      await API.graphql(
+        graphqlOperation(deleteDonation, { input: { id: String(donationId) } })
+      );
+
+      fetchCharities();
+    } catch (err) {
+      console.log(err);
     }
-    setCharities(char);
-  }
+  };
 
   return (
     <div>
