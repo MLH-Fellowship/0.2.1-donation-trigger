@@ -114,6 +114,6 @@ npm start
 ├── 📂 [utils](./src/utils)
 </pre></big>
 
-Big shoutout to the team over at [0.2.1-readme-dirs](https://github.com/MLH-Fellowship/0.2.1-readme-dirs) for greating this generated code structure.
+Big shoutout to the team over at [0.2.1-readme-dirs](https://github.com/MLH-Fellowship/0.2.1-readme-dirs) for creating this generated code structure.
 
 Generate your own project structure [here](https://project-structure-readme.netlify.app)
