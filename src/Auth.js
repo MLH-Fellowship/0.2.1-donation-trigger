@@ -6,10 +6,10 @@ import { withRouter } from "react-router-dom";
 import { API, graphqlOperation } from "aws-amplify";
 import { createUser } from "./graphql/mutations";
 
-const Auth = ({ addUser, history }) => {
+const Auth = ({ history }) => {
   const authHandler = async (error, data) => {
     if (error) {
-      alert(error);
+      alert("Please log into Twitter!");
       return;
     }
 
