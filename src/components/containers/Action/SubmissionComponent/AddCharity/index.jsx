@@ -31,10 +31,7 @@ const AddCharity = ({ addChar }) => {
   const [formMode, setMode] = useState(false);
 
   function submit() {
-    let org = formData.organization.split(",");
-
-    console.log(org);
-
+    let org = formData.organization.split(",")
     let newEntry = {
       organization: org[0],
       website: org[1],

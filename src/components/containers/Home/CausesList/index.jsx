@@ -41,8 +41,8 @@ const CausesList = () => {
         <p style={{ marginBottom: "1rem" }}>Causes you can support</p>
 
         <List>
-          {orgList.map((item) => (
-            <CauseListItem data={item} />
+          {orgList.map((item, i) => (
+            <CauseListItem key={i} data={item} />
           ))}
         </List>
       </Container>
