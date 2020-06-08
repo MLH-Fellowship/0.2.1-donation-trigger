@@ -12,6 +12,7 @@ export const getUser = /* GraphQL */ `
           id
           userID
           organization
+          website
           hashtag
           amount
           accumulatedAmount
@@ -64,6 +65,7 @@ export const getDonation = /* GraphQL */ `
         updatedAt
       }
       organization
+      website
       hashtag
       amount
       accumulatedAmount

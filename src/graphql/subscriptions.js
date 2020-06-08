@@ -12,6 +12,7 @@ export const onCreateUser = /* GraphQL */ `
           id
           userID
           organization
+          website
           hashtag
           amount
           accumulatedAmount
@@ -38,6 +39,7 @@ export const onUpdateUser = /* GraphQL */ `
           id
           userID
           organization
+          website
           hashtag
           amount
           accumulatedAmount
@@ -64,6 +66,7 @@ export const onDeleteUser = /* GraphQL */ `
           id
           userID
           organization
+          website
           hashtag
           amount
           accumulatedAmount
@@ -95,6 +98,7 @@ export const onCreateDonation = /* GraphQL */ `
         updatedAt
       }
       organization
+      website
       hashtag
       amount
       accumulatedAmount
@@ -121,6 +125,7 @@ export const onUpdateDonation = /* GraphQL */ `
         updatedAt
       }
       organization
+      website
       hashtag
       amount
       accumulatedAmount
@@ -147,6 +152,7 @@ export const onDeleteDonation = /* GraphQL */ `
         updatedAt
       }
       organization
+      website
       hashtag
       amount
       accumulatedAmount
